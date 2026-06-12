@@ -503,7 +503,7 @@
     eye.title = 'Ocultar comentarios';
     eye.onclick = function () {
       pinsVisible = !pinsVisible;
-      eye.innerHTML = pinsVisible ? '👁️' : '🙈';
+      eye.innerHTML = pinsVisible ? '👁️' : 'x';
       eye.title = pinsVisible ? 'Ocultar comentarios' : 'Mostrar comentarios';
       if (!pinsVisible) closeCommentCard();
       updateMarkerPositions();
