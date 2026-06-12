@@ -16,6 +16,6 @@
    podés exportarlos con doble-click en el botón "?".
    ========================================================================== */
 window.REVISION_SUPABASE = {
-  url: 'https://TU-PROYECTO.supabase.co',
-  anonKey: 'TU_ANON_KEY'
+  url: 'https://nxrxietezcmkdaxbmtjf.supabase.co',
+  anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im54cnhpZXRlemNta2RheGJtdGpmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEyNzMwMDMsImV4cCI6MjA5Njg0OTAwM30.022u05yLjS8guzktKSTHDX0Obto9bhDqCl1nkFFg4qo'
 };
