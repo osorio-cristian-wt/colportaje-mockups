@@ -9,6 +9,9 @@
      2) Botón flotante "Comentar": arrastrás una zona y dejás un comentario.
      3) Guardado en Supabase (tabla revision_comentario) con fallback a
         localStorage si no hay config o falla la red.
+     4) Carga inicial de los comentarios existentes (Supabase + pendientes
+        locales) y pines numerados sobre cada zona comentada; click en un pin
+        muestra el comentario y resalta la zona.
 
    Config: window.REVISION_VISTA  -> 'colportor' | 'admin' | 'coordinador'
            window.REVISION_SUPABASE = { url, anonKey }  (revision-config.js)
@@ -34,7 +37,12 @@
   // ── Estilos ───────────────────────────────────────────────────────────────
   var css = document.createElement('style');
   css.textContent = [
-    '#rev-fab{position:fixed;right:20px;bottom:20px;z-index:2147483600;display:flex;align-items:center;gap:8px;',
+    '#rev-dock{position:fixed;right:20px;bottom:20px;z-index:2147483600;display:flex;align-items:center;gap:8px;}',
+    '.rev-side{width:44px;height:44px;border-radius:50%;border:1px solid rgba(0,40,86,.25);background:#fff;',
+      'font-size:19px;line-height:1;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,.18);padding:0;',
+      'display:flex;align-items:center;justify-content:center;transition:transform .15s;}',
+    '.rev-side:hover{transform:translateY(-2px);}',
+    '#rev-fab{display:flex;align-items:center;gap:8px;',
       'padding:13px 20px;border-radius:999px;border:2px solid ' + GOLD + ';background:' + BRAND + ';color:#fff;',
       "font-family:Inter,system-ui,sans-serif;font-size:15px;font-weight:600;cursor:pointer;box-shadow:0 6px 22px rgba(0,40,86,.45);",
       'transition:transform .15s,box-shadow .15s;-webkit-user-select:none;user-select:none;}',
@@ -72,7 +80,15 @@
       'color:#fff;padding:11px 18px;border-radius:10px;font-family:Inter,sans-serif;font-size:13.5px;font-weight:600;',
       'box-shadow:0 8px 24px rgba(0,0,0,.3);animation:revfade 3s forwards;}',
     '.rev-toast.warn{background:#B8860B;}',
-    '@keyframes revfade{0%{opacity:0;transform:translateX(-50%) translateY(8px);}10%,80%{opacity:1;transform:translateX(-50%) translateY(0);}100%{opacity:0;}}'
+    '@keyframes revfade{0%{opacity:0;transform:translateX(-50%) translateY(8px);}10%,80%{opacity:1;transform:translateX(-50%) translateY(0);}100%{opacity:0;}}',
+    '.rev-pin{position:fixed;z-index:2147483610;width:26px;height:26px;border-radius:50% 50% 50% 4px;border:2px solid #fff;',
+      'background:' + GOLD + ';color:' + BRAND + ';font-family:Inter,sans-serif;font-size:12px;font-weight:700;',
+      'display:none;align-items:center;justify-content:center;cursor:pointer;padding:0;',
+      'box-shadow:0 3px 10px rgba(0,0,0,.35);}',
+    '.rev-pin:hover{transform:scale(1.15);}',
+    '.rev-zone{position:fixed;z-index:2147483605;border:2px solid ' + GOLD + ';background:rgba(244,196,48,.15);',
+      'border-radius:6px;pointer-events:none;}',
+    '.rev-card .rev-meta{margin:0;padding:0 18px 14px;font-size:12px;color:#7A8AA0;}'
   ].join('');
   document.head.appendChild(css);
 
@@ -130,6 +146,10 @@
     var t = el('div', 'rev-toast' + (warn ? ' warn' : ''), msg);
     document.body.appendChild(t);
     setTimeout(function () { t.remove(); }, 3000);
+  }
+  function esc(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   }
 
   // ── 1) Bienvenida con spotlight ────────────────────────────────────────────
@@ -299,6 +319,9 @@
   }
   function saveComment(rec) {
     bumpBadge();
+    rec.created_at = new Date().toISOString();
+    comments.push(rec);
+    renderMarkers();
     if (!supabaseConfigured()) {
       queueLocal(rec);
       toast('Guardado localmente (Supabase sin configurar)', true);
@@ -333,6 +356,121 @@
     if (b) { b.textContent = count; b.style.display = 'flex'; }
   }
 
+  // ── 4) Carga inicial y marcadores de comentarios existentes ────────────────
+  var comments = [];
+  var markers = [];   // [{rec, pin}]
+  var openCard = null, openZone = null, openRec = null;
+
+  function loadComments() {
+    var local = JSON.parse(localStorage.getItem('rev_pendientes') || '[]')
+      .filter(function (r) { return r.vista === VISTA; });
+    if (!supabaseConfigured()) { setComments(local); return; }
+    var url = CFG.url.replace(/\/$/, '') + '/rest/v1/revision_comentario' +
+      '?vista=eq.' + encodeURIComponent(VISTA) +
+      '&select=tab,x,y,ancho,alto,comentario,autor,created_at' +
+      '&order=created_at.asc';
+    fetch(url, {
+      headers: { 'apikey': CFG.anonKey, 'Authorization': 'Bearer ' + CFG.anonKey }
+    }).then(function (res) {
+      if (!res.ok) throw new Error('Supabase ' + res.status);
+      return res.json();
+    }).then(function (rows) {
+      setComments(rows.concat(local));
+    }).catch(function (e) {
+      console.error('[revision] no se pudieron cargar los comentarios:', e);
+      setComments(local);
+    });
+  }
+
+  function setComments(list) {
+    comments = list;
+    count = list.length;
+    var b = document.querySelector('#rev-fab .rev-badge');
+    if (b && count) { b.textContent = count; b.style.display = 'flex'; }
+    renderMarkers();
+  }
+
+  function renderMarkers() {
+    markers.forEach(function (m) { m.pin.remove(); });
+    markers = [];
+    comments.forEach(function (rec, i) {
+      var pin = el('button', 'rev-pin', String(i + 1));
+      pin.title = rec.comentario;
+      pin.onclick = function (e) { e.stopPropagation(); showCommentCard(rec); };
+      document.body.appendChild(pin);
+      markers.push({ rec: rec, pin: pin });
+    });
+    updateMarkerPositions();
+  }
+
+  var pinsVisible = true;
+
+  function updateMarkerPositions() {
+    if (!markers.length) return;
+    if (!pinsVisible) {
+      markers.forEach(function (m) { m.pin.style.display = 'none'; });
+      return;
+    }
+    var tab = activeTab();
+    var cont = scrollContainer();
+    var cr = cont.getBoundingClientRect();
+    var st = cont.scrollTop || 0;
+    markers.forEach(function (m) {
+      var r = m.rec;
+      if (r.tab !== tab) { m.pin.style.display = 'none'; return; }
+      var cx = cr.left + r.x + (r.ancho || 0) / 2;
+      var cy = cr.top + (r.y - st) + (r.alto || 0) / 2;
+      if (cy < cr.top - 14 || cy > cr.bottom + 14) { m.pin.style.display = 'none'; return; }
+      m.pin.style.display = 'flex';
+      m.pin.style.left = (cx - 13) + 'px';
+      m.pin.style.top = (cy - 13) + 'px';
+    });
+    // La zona resaltada del comentario abierto acompaña al scroll / cambio de tab.
+    if (openZone && openRec) {
+      if (openRec.tab !== tab) { closeCommentCard(); return; }
+      openZone.style.left = (cr.left + openRec.x) + 'px';
+      openZone.style.top = (cr.top + (openRec.y - st)) + 'px';
+    }
+  }
+
+  function closeCommentCard() {
+    if (openCard) { openCard.remove(); openCard = null; }
+    if (openZone) { openZone.remove(); openZone = null; }
+    openRec = null;
+  }
+
+  function showCommentCard(rec) {
+    closeCommentCard();
+    openRec = rec;
+    var cont = scrollContainer();
+    var cr = cont.getBoundingClientRect();
+    var st = cont.scrollTop || 0;
+    var zTop = cr.top + (rec.y - st);
+
+    openZone = el('div', 'rev-zone');
+    openZone.style.left = (cr.left + rec.x) + 'px';
+    openZone.style.top = zTop + 'px';
+    openZone.style.width = (rec.ancho || 50) + 'px';
+    openZone.style.height = (rec.alto || 50) + 'px';
+    document.body.appendChild(openZone);
+
+    var fecha = rec.created_at
+      ? new Date(rec.created_at).toLocaleString('es-AR', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' })
+      : 'pendiente de envío';
+    openCard = el('div', 'rev-card');
+    openCard.innerHTML =
+      '<h3>Comentario</h3>' +
+      '<p>' + esc(rec.comentario) + '</p>' +
+      '<p class="rev-meta">' + esc(rec.autor || 'Anónimo') + ' · ' + esc(fecha) + '</p>' +
+      '<div class="rev-row"><button class="rev-btn ghost" id="rev-close">Cerrar</button></div>';
+    var top = Math.min(zTop + (rec.alto || 50) + 10, window.innerHeight - 230);
+    openCard.style.top = Math.max(12, top) + 'px';
+    openCard.style.left = '50%';
+    openCard.style.transform = 'translateX(-50%)';
+    document.body.appendChild(openCard);
+    openCard.querySelector('#rev-close').onclick = closeCommentCard;
+  }
+
   // Exporta la cola local (respaldo si Supabase falló o no está configurado).
   function exportLocal() {
     var q = JSON.parse(localStorage.getItem('rev_pendientes') || '[]');
@@ -357,9 +495,35 @@
     // doble click en "?" exporta la cola local de respaldo
     help.ondblclick = function (e) { e.preventDefault(); exportLocal(); };
 
-    document.body.appendChild(fab);
+    var home = el('button', 'rev-side', '🏠');
+    home.title = 'Volver al inicio';
+    home.onclick = function () { location.href = 'index.html'; };
+
+    var eye = el('button', 'rev-side', '👁️');
+    eye.title = 'Ocultar comentarios';
+    eye.onclick = function () {
+      pinsVisible = !pinsVisible;
+      eye.innerHTML = pinsVisible ? '👁️' : '🙈';
+      eye.title = pinsVisible ? 'Ocultar comentarios' : 'Mostrar comentarios';
+      if (!pinsVisible) closeCommentCard();
+      updateMarkerPositions();
+    };
+
+    var dock = el('div');
+    dock.id = 'rev-dock';
+    dock.appendChild(home);
+    dock.appendChild(fab);
+    dock.appendChild(eye);
+    document.body.appendChild(dock);
     document.body.appendChild(help);
     showWelcome(false);
+
+    loadComments();
+    // Los pines se reubican al scrollear (capture: el scroll ocurre en el
+    // contenedor interno), al redimensionar y al cambiar de pestaña (interval).
+    window.addEventListener('scroll', updateMarkerPositions, true);
+    window.addEventListener('resize', updateMarkerPositions);
+    setInterval(updateMarkerPositions, 400);
   }
 
   // Esperar a que el runtime DC renderice la pantalla.

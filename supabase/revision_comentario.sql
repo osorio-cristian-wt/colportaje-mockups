@@ -26,8 +26,9 @@ create table if not exists public.revision_comentario (
 -- Índice para listar por vista/pantalla al revisar el feedback.
 create index if not exists idx_revision_comentario_vista on public.revision_comentario (vista, tab, created_at desc);
 
--- RLS: el sitio estático usa la anon key. Solo se permite INSERT anónimo;
--- la lectura queda reservada a usuarios autenticados (vos, desde el dashboard).
+-- RLS: el sitio estático usa la anon key. Se permite INSERT anónimo y también
+-- SELECT anónimo, para que la página muestre los comentarios ya cargados al
+-- iniciar (la tabla no contiene PII de clientes, solo feedback de mockups).
 alter table public.revision_comentario enable row level security;
 
 drop policy if exists "anon puede insertar comentarios" on public.revision_comentario;
@@ -36,6 +37,13 @@ create policy "anon puede insertar comentarios"
   for insert
   to anon
   with check (true);
+
+drop policy if exists "anon puede leer comentarios" on public.revision_comentario;
+create policy "anon puede leer comentarios"
+  on public.revision_comentario
+  for select
+  to anon
+  using (true);
 
 drop policy if exists "authenticated puede leer comentarios" on public.revision_comentario;
 create policy "authenticated puede leer comentarios"
