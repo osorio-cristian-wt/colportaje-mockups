@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<script src="./revision-config.js"></script>
+<script>window.REVISION_VISTA="admin";</script>
+<script src="./revision.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&amp;family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+  <style>
+    body { margin:0; background:#FAFAF7; font-family:'Inter',sans-serif; color:#0E1A2B; -webkit-font-smoothing:antialiased; }
+  </style>
+</helmet>
+
+<div style="height:100vh; min-width:1280px; display:grid; grid-template-rows:58px 1fr; overflow:hidden;">
+
+  <!-- ============ TOPBAR ============ -->
+  <div style="background:#fff; border-bottom:1px solid #E3E7EE; display:flex; align-items:center; justify-content:space-between; padding:0 22px; z-index:10;">
+    <div style="display:flex; align-items:center; gap:24px;">
+      <div style="display:flex; align-items:center; gap:11px;">
+        <div style="width:32px; height:32px; border-radius:50%; background:#002856; color:#fff; display:grid; place-items:center; font-family:'Source Serif 4',serif; font-size:12px; font-weight:600;">UU</div>
+        <span style="font-family:'Source Serif 4',serif; font-size:15px; font-weight:600;">Colportaje</span>
+      </div>
+      <div style="display:flex; gap:4px; font-size:13px;">
+        <sc-for list="{{ navItems }}" as="ni" hint-placeholder-count="6">
+          <span style="{{ ni.style }}" onClick="{{ ni.go }}">{{ ni.label }}</span>
+        </sc-for>
+      </div>
+    </div>
+    <div style="display:flex; align-items:center; gap:12px;">
+      <span style="font-size:12px; color:#5B6B82; border:1px solid #E3E7EE; padding:7px 12px; border-radius:6px; background:#fff; cursor:pointer;">Campaña Verano 2026 ▾</span>
+      <div style="width:32px; height:32px; border-radius:50%; background:#E6EEF8; color:#002856; display:grid; place-items:center; font-size:12px; font-weight:600;">AD</div>
+    </div>
+  </div>
+
+  <!-- ============ CONTENT ============ -->
+  <div style="position:relative; overflow:hidden;">
+
+    <!-- ════════════ INICIO ════════════ -->
+    <sc-if value="{{ show.inicio }}" hint-placeholder-val="{{ true }}">
+      <div data-screen-label="Admin · Inicio" style="position:absolute; inset:0; overflow:auto; padding:20px 22px; display:flex; flex-direction:column; gap:16px;">
+        <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:14px;">
+          <div style="background:#fff; border:1px solid #E3E7EE; border-radius:8px; padding:16px 18px;">
+            <div style="font-size:10px; letter-spacing:.13em; color:#5B6B82; font-weight:600;">VENTAS CAMPAÑA</div>
+            <div style="font-family:'Source Serif 4',serif; font-size:28px; font-weight:600; color:#002856;">$U 1.84M</div>
+            <div style="font-size:11px; color:#1F6E3A;">▲ 12% semana</div>
+          </div>
+          <div style="background:#fff; border:1px solid #E3E7EE; border-radius:8px; padding:16px 18px;">
+            <div style="font-size:10px; letter-spacing:.13em; color:#5B6B82; font-weight:600;">LIBROS COLOCADOS</div>
+            <div style="font-family:'Source Serif 4',serif; font-size:28px; font-weight:600; color:#002856;">3.412</div>
+            <div style="font-size:11px; color:#5B6B82;">promedio 55 / colportor</div>
+          </div>
+          <div style="background:#fff; border:1px solid #E3E7EE; border-radius:8px; padding:16px 18px;">
+            <div style="font-size:10px; letter-spacing:.13em; color:#5B6B82; font-weight:600;">HORAS EN CAMPO</div>
+            <div style="font-family:'Source Serif 4',serif; font-size:28px; font-weight:600; color:#002856;">9.860</div>
+            <div style="font-size:11px; color:#5B6B82;">esta semana: 1.240</div>
+          </div>
+          <div style="background:#fff; border:1px solid #E3E7EE; border-radius:8px; padding:16px 18px;">
+            <div style="font-size:10px; letter-spacing:.13em; color:#5B6B82; font-weight:600;">BECAS · META ALCANZADA</div>
+            <div style="font-family:'Source Serif 4',serif; font-size:28px; font-weight:600; color:#002856;">9 <span style="font-size:15px; color:#90A0B7;">/ 41</span></div>
+            <div style="font-size:11px; color:#A98330;">media de avance 61%</div>
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 340px; gap:16px; align-items:start;">
+          <div style="display:flex; flex-direction:column; gap:16px;">
+            <div style="background:#fff; border:1px solid #E3E7EE; border-radius:8px; padding:16px 18px;">
+              <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:14px;">
+                <span style="font-family:'Source Serif 4',serif; font-size:15px; font-weight:600;">Ventas por semana</span>
+                <span style="font-size:11px; color:#90A0B7;">$U miles · campaña completa</span>
+              </div>
+              <div style="display:flex; align-items:flex-end; gap:10px; height:120px;">
+                <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; height:100%; justify-content:flex-end;"><div style="width:100%; height:34%; background:#CFD6E1; border-radius:3px 3px 0 0;"></div><span style="font-size:10px; color:#90A0B7;">S1</span></div>
+                <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; height:100%; justify-content:flex-end;"><div style="width:100%; height:48%; background:#CFD6E1; border-radius:3px 3px 0 0;"></div><span style="font-size:10px; color:#90A0B7;">S2</span></div>
+                <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; height:100%; justify-content:flex-end;"><div style="width:100%; height:42%; background:#CFD6E1; border-radius:3px 3px 0 0;"></div><span style="font-size:10px; color:#90A0B7;">S3</span></div>
+                <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; height:100%; justify-content:flex-end;"><div style="width:100%; height:62%; background:#3B5C8C; border-radius:3px 3px 0 0;"></div><span style="font-size:10px; color:#90A0B7;">S4</span></div>
+                <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; height:100%; justify-content:flex-end;"><div style="width:100%; height:71%; background:#3B5C8C; border-radius:3px 3px 0 0;"></div><span style="font-size:10px; color:#90A0B7;">S5</span></div>
+                <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; height:100%; justify-content:flex-end;"><div style="width:100%; height:84%; background:#13407A; border-radius:3px 3px 0 0;"></div><span style="font-size:10px; color:#90A0B7;">S6</span></div>
+                <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; height:100%; justify-content:flex-end;"><div style="width:100%; height:100%; background:#002856; border-radius:3px 3px 0 0;"></div><span style="font-size:10px; color:#90A0B7;">S7</span></div>
+                <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; height:100%; justify-content:flex-end;"><div style="width:100%; height:78%; background:#C8A24A; border-radius:3px 3px 0 0;"></div><span style="font-size:10px; color:#A98330; font-weight:600;">S8</span></div>
+              </div>
+            </div>
+
+            <div style="background:#fff; border:1px solid #E3E7EE; border-radius:8px; overflow:hidden;">
+              <div style="padding:14px 18px 10px; display:flex; justify-content:space-between; align-items:baseline;">
+                <span style="font-family:'Source Serif 4',serif; font-size:15px; font-weight:600;">Coordinadores</span>
+                <span style="font-size:11px; color:#13407A; font-weight:600; cursor:pointer;">Ver todos →</span>
+              </div>
+              <div style="display:grid; grid-template-columns:2fr 1.4fr 1fr 1fr 1fr; padding:7px 18px; font-size:10px; letter-spacing:.1em; color:#5B6B82; font-weight:600; border-bottom:1px solid #E3E7EE;">
+                <span>COORDINADOR</span><span>REGIÓN</span><span>EQUIPO</span><span>VENTAS</span><span>COBRADO</span>
+              </div>
+              <div style="display:grid; grid-template-columns:2fr 1.4fr 1fr 1fr 1fr; padding:11px 18px; font-size:12.5px; border-bottom:1px solid #F3F1EA; align-items:center;">
+                <span style="font-weight:600;">Marcos Pereyra</span><span style="color:#5B6B82;">Montevideo Oeste</span><span>14</span><span>$U 612K</span><span style="color:#1F6E3A; font-weight:600;">71%</span>
+              </div>
+              <div style="display:grid; grid-template-columns:2fr 1.4fr 1fr 1fr 1fr; padding:11px 18px; font-size:12.5px; border-bottom:1px solid #F3F1EA; align-items:center;">
+                <span style="font-weight:600;">Raquel Domínguez</span><span style="color:#5B6B82;">Canelones</span><span>18</span><span>$U 540K</span><span style="color:#1F6E3A; font-weight:600;">66%</span>
+              </div>
+              <div style="display:grid; grid-template-columns:2fr 1.4fr 1fr 1fr 1fr; padding:11px 18px; font-size:12.5px; border-bottom:1px solid #F3F1EA; align-items:center;">
+                <span style="font-weight:600;">Jonatan Méndez</span><span style="color:#5B6B82;">Norte (Rivera/Salto)</span><span>9</span><span>$U 287K</span><span style="color:#A98330; font-weight:600;">54%</span>
+              </div>
+              <div style="display:grid; grid-template-columns:2fr 1.4fr 1fr 1fr 1fr; padding:11px 18px; font-size:12.5px; align-items:center;">
+                <span style="font-weight:600;">Ester Núñez</span><span style="color:#5B6B82;">Florida / Durazno</span><span>11</span><span>$U 403K</span><span style="color:#1F6E3A; font-weight:600;">69%</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="background:#fff; border:1px solid #E3E7EE; border-radius:8px; display:flex; flex-direction:column; overflow:hidden;">
+            <div style="padding:14px 16px 10px; border-bottom:1px solid #E3E7EE; font-family:'Source Serif 4',serif; font-size:15px; font-weight:600;">Pendientes de acción</div>
+            <div style="padding:12px 16px; display:flex; flex-direction:column; gap:10px;">
+              <div style="border:1px solid #E3E7EE; border-radius:6px; padding:11px 12px; display:flex; flex-direction:column; gap:3px;">
+                <div style="display:flex; justify-content:space-between; font-size:12.5px;"><span style="font-weight:600;">Zona sin coordinador</span><span style="font-size:10px; background:#F7E4E2; color:#A8312A; padding:2px 7px; border-radius:99px; font-weight:600;">3 días</span></div>
+                <div style="font-size:11.5px; color:#5B6B82;">Mandubí · Rivera · 4 colportores sin supervisión</div>
+                <div style="display:flex; gap:8px; margin-top:5px;">
+                  <span style="font-size:11px; font-weight:600; color:#fff; background:#002856; padding:5px 12px; border-radius:5px; cursor:pointer;">Asignar coordinador</span>
+                </div>
+              </div>
+              <div style="border:1px solid #E3E7EE; border-radius:6px; padding:11px 12px; display:flex; flex-direction:column; gap:3px;">
+                <div style="display:flex; justify-content:space-between; font-size:12.5px;"><span style="font-weight:600;">Beca bajo ritmo</span><span style="font-size:10px; background:#FBF1DA; color:#A98330; padding:2px 7px; border-radius:99px; font-weight:600;">28%</span></div>
+                <div style="font-size:11.5px; color:#5B6B82;">Joel Cabrera · Ing. Sistemas · $U 27K de $U 96K</div>
+                <div style="display:flex; gap:8px; margin-top:5px;">
+                  <span style="font-size:11px; font-weight:600; color:#2A3A52; border:1px solid #E3E7EE; padding:5px 12px; border-radius:5px; cursor:pointer;">Ver beca</span>
+                </div>
+              </div>
+              <div style="border:1px solid #E3E7EE; border-radius:6px; padding:11px 12px; display:flex; flex-direction:column; gap:3px;">
+                <div style="display:flex; justify-content:space-between; font-size:12.5px;"><span style="font-weight:600;">Usuario nuevo · colportor</span><span style="font-size:10px; background:#E6EEF8; color:#13407A; padding:2px 7px; border-radius:99px; font-weight:600;">nuevo</span></div>
+                <div style="font-size:11.5px; color:#5B6B82;">ana.martinez@… · colportor por defecto · su coordinador le asigna zona</div>
+                <div style="display:flex; gap:8px; margin-top:5px;">
+                  <span style="font-size:11px; font-weight:600; color:#2A3A52; border:1px solid #E3E7EE; padding:5px 12px; border-radius:5px; cursor:pointer;">Elevar permisos</span>
+                </div>
+              </div>
+            </div>
+            <div style="border-top:1px solid #E3E7EE; padding:12px 16px;">
+              <div style="font-size:10px; letter-spacing:.13em; color:#5B6B82; font-weight:600; margin-bottom:8px;">MINI MAPA PAÍS</div>
+              <div style="height:130px; border-radius:6px; background:#E8EEF3 repeating-linear-gradient(45deg, rgba(14,26,43,.035) 0 8px, transparent 8px 20px); position:relative;">
+                <span style="position:absolute; inset:0; display:grid; place-items:center; font-family:'JetBrains Mono',monospace; font-size:10px; color:#90A0B7;">[ mapa OSM · ventas ]</span>
+                <span style="position:absolute; left:30%; top:60%; width:12px; height:12px; border-radius:50%; background:#002856; border:2px solid #fff;"></span>
+                <span style="position:absolute; left:55%; top:38%; width:10px; height:10px; border-radius:50%; background:#13407A; border:2px solid #fff;"></span>
+                <span style="position:absolute; left:70%; top:22%; width:9px; height:9px; border-radius:50%; background:#3B5C8C; border:2px solid #fff;"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+
+    <!-- ════════════ CAMPAÑAS ════════════ -->
+    <sc-if value="{{ show.campanas }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="Admin · Campañas" style="position:absolute; inset:0; overflow:auto; padding:20px 22px; display:flex; flex-direction:column; gap:16px;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <h2 style="font-family:'Source Serif 4',serif; font-size:21px; font-weight:600; margin:0;">Campañas y zonas</h2>
+          <span style="font-size:12px; font-weight:600; color:#fff; background:#002856; padding:9px 16px; border-radius:6px; cursor:pointer;">+ Nueva campaña</span>
+        </div>
+
+        <div style="background:#fff; border:1px solid #E3E7EE; border-radius:8px; padding:18px 20px; display:flex; align-items:center; gap:28px;">
+          <div style="display:flex; flex-direction:column; gap:2px; min-width:170px;">
+            <span style="display:inline-flex; align-items:center; gap:6px; font-size:10px; letter-spacing:.14em; color:#1F6E3A; font-weight:700;"><span style="width:7px; height:7px; border-radius:50%; background:#1F6E3A;"></span>ACTIVA</span>
+            <span style="font-family:'Source Serif 4',serif; font-size:20px; font-weight:600;">Verano 2026</span>
+            <span style="font-size:11.5px; color:#5B6B82;">5 ene – 13 mar · 12 zonas · 62 colportores</span>
+          </div>
+          <div style="flex:1; display:flex; flex-direction:column; gap:6px; max-width:480px;">
+            <div style="display:flex; justify-content:space-between; font-size:11px; color:#5B6B82;"><span>5 ene</span><span style="color:#002856; font-weight:600;">semana 8 de 10</span><span>13 mar</span></div>
+            <div style="height:8px; background:#F3F1EA; border-radius:4px; position:relative;"><div style="width:78%; height:8px; background:#002856; border-radius:4px;"></div><div style="position:absolute; left:78%; top:-3px; width:14px; height:14px; border-radius:50%; background:#C8A24A; border:2px solid #fff; box-shadow:0 1px 3px rgba(0,0,0,.25);"></div></div>
+          </div>
+          <div style="display:flex; gap:24px;">
+            <div style="display:flex; flex-direction:column;"><span style="font-size:10px; letter-spacing:.12em; color:#5B6B82; font-weight:600;">VENTAS</span><span style="font-family:'Source Serif 4',serif; font-size:19px; font-weight:600; color:#002856;">$U 1.84M</span></div>
+            <div style="display:flex; flex-direction:column;"><span style="font-size:10px; letter-spacing:.12em; color:#5B6B82; font-weight:600;">META</span><span style="font-family:'Source Serif 4',serif; font-size:19px; font-weight:600; color:#002856;">$U 2.40M</span></div>
+            <div style="display:flex; flex-direction:column;"><span style="font-size:10px; letter-spacing:.12em; color:#5B6B82; font-weight:600;">PROYECCIÓN</span><span style="font-family:'Source Serif 4',serif; font-size:19px; font-weight:600; color:#1F6E3A;">96%</span></div>
+          </div>
+          <span style="font-size:12px; font-weight:600; color:#2A3A52; border:1px solid #E3E7EE; padding:8px 14px; border-radius:6px; cursor:pointer;">Configurar</span>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 320px; gap:16px; align-items:start;">
+          <div style="background:#fff; border:1px solid #E3E7EE; border-radius:8px; overflow:hidden;">
+            <div style="padding:14px 18px 10px; display:flex; justify-content:space-between; align-items:baseline;">
+              <span style="font-family:'Source Serif 4',serif; font-size:15px; font-weight:600;">Zonas de la campaña</span>
+              <span style="font-size:11px; color:#13407A; font-weight:600; cursor:pointer;">+ Nueva zona</span>
+            </div>
+            <div style="display:grid; grid-template-columns:1.6fr 1.2fr 1.6fr 0.8fr 1fr; padding:7px 18px; font-size:10px; letter-spacing:.1em; color:#5B6B82; font-weight:600; border-bottom:1px solid #E3E7EE;">
+              <span>ZONA</span><span>CIUDAD</span><span>COORDINADOR</span><span>COLP.</span><span>AVANCE</span>
+            </div>
+            <div style="display:grid; grid-template-columns:1.6fr 1.2fr 1.6fr 0.8fr 1fr; padding:11px 18px; font-size:12.5px; border-bottom:1px solid #F3F1EA; align-items:center;">
+              <span style="font-weight:600;">La Paz · Sector 1–4</span><span style="color:#5B6B82;">Canelones</span><span>Raquel Domínguez</span><span>8</span>
+              <span style="display:flex; align-items:center; gap:8px;"><span style="flex:1; height:5px; background:#F3F1EA; border-radius:3px;"><span style="display:block; width:82%; height:5px; background:#1F6E3A; border-radius:3px;"></span></span><span style="font-size:11px; font-weight:600; color:#1F6E3A;">82%</span></span>
+            </div>
+            <div style="display:grid; grid-template-columns:1.6fr 1.2fr 1.6fr 0.8fr 1fr; padding:11px 18px; font-size:12.5px; border-bottom:1px solid #F3F1EA; align-items:center;">
+              <span style="font-weight:600;">Cerro Norte</span><span style="color:#5B6B82;">Montevideo</span><span>Marcos Pereyra</span><span>11</span>
+              <span style="display:flex; align-items:center; gap:8px;"><span style="flex:1; height:5px; background:#F3F1EA; border-radius:3px;"><span style="display:block; width:74%; height:5px; background:#1F6E3A; border-radius:3px;"></span></span><span style="font-size:11px; font-weight:600; color:#1F6E3A;">74%</span></span>
+            </div>
+            <div style="display:grid; grid-template-columns:1.6fr 1.2fr 1.6fr 0.8fr 1fr; padding:11px 18px; font-size:12.5px; border-bottom:1px solid #F3F1EA; align-items:center;">
+              <span style="font-weight:600;">Centro</span><span style="color:#5B6B82;">Florida</span><span>Ester Núñez</span><span>6</span>
+              <span style="display:flex; align-items:center; gap:8px;"><span style="flex:1; height:5px; background:#F3F1EA; border-radius:3px;"><span style="display:block; width:58%; height:5px; background:#C8A24A; border-radius:3px;"></span></span><span style="font-size:11px; font-weight:600; color:#A98330;">58%</span></span>
+            </div>
+            <div style="display:grid; grid-template-columns:1.6fr 1.2fr 1.6fr 0.8fr 1fr; padding:11px 18px; font-size:12.5px; border-bottom:1px solid #F3F1EA; align-items:center; background:#FBF8F1;">
+              <span style="font-weight:600;">Mandubí</span><span style="color:#5B6B82;">Rivera</span><span style="color:#A8312A; font-weight:600;">⚠ Sin asignar</span><span>4</span>
+              <span style="display:flex; align-items:center; gap:8px;"><span style="flex:1; height:5px; background:#F3F1EA; border-radius:3px;"><span style="display:block; width:31%; height:5px; background:#A8312A; border-radius:3px;"></span></span><span style="font-size:11px; font-weight:600; color:#A8312A;">31%</span></span>
+            </div>
+            <div style="display:grid; grid-template-columns:1.6fr 1.2fr 1.6fr 0.8fr 1fr; padding:11px 18px; font-size:12.5px; align-items:center;">
+              <span style="font-weight:600;">Nuevo Paysandú</span><span style="color:#5B6B82;">Paysandú</span><span>Jonatan Méndez</span><span>5</span>
+              <span style="display:flex; align-items:center; gap:8px;"><span style="flex:1; height:5px; background:#F3F1EA; border-radius:3px;"><span style="display:block; width:47%; height:5px; background:#C8A24A; border-radius:3px;"></span></span><span style="font-size:11px; font-weight:600; color:#A98330;">47%</span></span>
+            </div>
+          </div>
+
+          <div style="display:flex; flex-direction:column; gap:16px;">
+            <div style="background:#fff; border:1px solid #E3E7EE; border-radius:8px; overflow:hidden;">
+              <div style="padding:14px 16px 10px; display:flex; justify-content:space-between; align-items:baseline; border-bottom:1px solid #E3E7EE;">
+                <span style="font-family:'Source Serif 4',serif; font-size:15px; font-weight:600;">Ciudades</span>
+                <span style="font-size:11px; color:#13407A; font-weight:600; cursor:pointer;">+ Agregar</span>
+              </div>
+              <div style="padding:8px 16px 12px; display:flex; flex-direction:column;">
+                <div style="display:flex; justify-content:space-between; padding:8px 0; font-size:12.5px; border-bottom:1px solid #F3F1EA;"><span style="font-weight:600;">Montevideo</span><span style="color:#5B6B82;">4 zonas</span></div>
+                <div style="display:flex; justify-content:space-between; padding:8px 0; font-size:12.5px; border-bottom:1px solid #F3F1EA;"><span style="font-weight:600;">Canelones</span><span style="color:#5B6B82;">3 zonas</span></div>
+                <div style="display:flex; justify-content:space-between; padding:8px 0; font-size:12.5px; border-bottom:1px solid #F3F1EA;"><span style="font-weight:600;">Florida</span><span style="color:#5B6B82;">2 zonas</span></div>
+                <div style="display:flex; justify-content:space-between; padding:8px 0; font-size:12.5px; border-bottom:1px solid #F3F1EA;"><span style="font-weight:600;">Rivera</span><span style="color:#5B6B82;">2 zonas</span></div>
+                <div style="display:flex; justify-content:space-between; padding:8px 0; font-size:12.5px;"><span style="font-weight:600;">Paysandú</span><span style="color:#5B6B82;">1 zona</span></div>
+              </div>
+            </div>
+            <div style="background:#fff; border:1px solid #E3E7EE; border-radius:8px; overflow:hidden;">
+              <div style="padding:14px 16px 10px; border-bottom:1px solid #E3E7EE; font-family:'Source Serif 4',serif; font-size:15px; font-weight:600;">Campañas anteriores</div>
+              <div style="padding:8px 16px 12px; display:flex; flex-direction:column;">
+                <div style="display:flex; justify-content:space-between; align-items:center; padding:9px 0; border-bottom:1px solid #F3F1EA;">
+                  <div style="display:flex; flex-direction:column;"><span style="font-size:12.5px; font-weight:600;">Invierno 2025</span><span style="font-size:11px; color:#90A0B7;">$U 980K · 38 colportores</span></div>
+                  <span style="font-size:10px; background:#F3F1EA; color:#5B6B82; padding:3px 8px; border-radius:99px; font-weight:600;">CERRADA</span>
+                </div>
+                <div style="display:flex; justify-content:space-between; align-items:center; padding:9px 0;">
+                  <div style="display:flex; flex-direction:column;"><span style="font-size:12.5px; font-weight:600;">Verano 2025</span><span style="font-size:11px; color:#90A0B7;">$U 1.61M · 55 colportores</span></div>
+                  <span style="font-size:10px; background:#F3F1EA; color:#5B6B82; padding:3px 8px; border-radius:99px; font-weight:600;">CERRADA</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+
+    <!-- ════════════ USUARIOS ════════════ -->
+    <sc-if value="{{ show.usuarios }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="Admin · Usuarios" style="position:absolute; inset:0; overflow:auto; padding:20px 22px; display:flex; flex-direction:column; gap:16px;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <h2 style="font-family:'Source Serif 4',serif; font-size:21px; font-weight:600; margin:0;">Usuarios y roles</h2>
+          <span style="font-size:12px; font-weight:600; color:#fff; background:#002856; padding:9px 16px; border-radius:6px; cursor:pointer;">+ Invitar usuario</span>
+        </div>
+        <div style="display:flex; gap:8px;">
+          <span style="font-size:12px; font-weight:600; background:#002856; color:#fff; padding:7px 14px; border-radius:999px; cursor:pointer;">Todos · 78</span>
+          <span style="font-size:12px; font-weight:600; background:#fff; color:#2A3A52; border:1px solid #E3E7EE; padding:7px 14px; border-radius:999px; cursor:pointer;">Colportores · 71</span>
+          <span style="font-size:12px; font-weight:600; background:#fff; color:#2A3A52; border:1px solid #E3E7EE; padding:7px 14px; border-radius:999px; cursor:pointer;">Coordinadores · 5</span>
+          <span style="font-size:12px; font-weight:600; background:#fff; color:#2A3A52; border:1px solid #E3E7EE; padding:7px 14px; border-radius:999px; cursor:pointer;">Administradores · 2</span>
+          <span style="font-size:12px; font-weight:600; background:#FBF1DA; color:#A98330; border:1px solid #C8A24A; padding:7px 14px; border-radius:999px; cursor:pointer;">Sin zona · 3</span>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 320px; gap:16px; align-items:start;">
+          <div style="background:#fff; border:1px solid #E3E7EE; border-radius:8px; overflow:hidden;">
+            <div style="display:grid; grid-template-columns:1.8fr 2fr 1.2fr 1.4fr 0.9fr 0.7fr; padding:10px 18px; font-size:10px; letter-spacing:.1em; color:#5B6B82; font-weight:600; border-bottom:1px solid #E3E7EE;">
+              <span>NOMBRE</span><span>EMAIL</span><span>ROL</span><span>ZONA</span><span>ESTADO</span><span></span>
+            </div>
+            <div style="display:grid; grid-template-columns:1.8fr 2fr 1.2fr 1.4fr 0.9fr 0.7fr; padding:11px 18px; font-size:12.5px; border-bottom:1px solid #F3F1EA; align-items:center;">
+              <span style="font-weight:600;">Lucía Silvera</span><span style="color:#5B6B82;">lucia.s@…</span><span><span style="font-size:10px; background:#E6EEF8; color:#13407A; padding:3px 8px; border-radius:99px; font-weight:600;">COLPORTOR</span></span><span style="color:#5B6B82;">La Paz · Sector 3</span><span style="color:#1F6E3A; font-weight:600;">Activo</span><span style="font-size:11px; color:#13407A; font-weight:600; cursor:pointer;">Editar</span>
+            </div>
+            <div style="display:grid; grid-template-columns:1.8fr 2fr 1.2fr 1.4fr 0.9fr 0.7fr; padding:11px 18px; font-size:12.5px; border-bottom:1px solid #F3F1EA; align-items:center;">
+              <span style="font-weight:600;">Marcos Pereyra</span><span style="color:#5B6B82;">m.pereyra@…</span><span><span style="font-size:10px; background:#002856; color:#fff; padding:3px 8px; border-radius:99px; font-weight:600;">COORDINADOR</span></span><span style="color:#5B6B82;">Montevideo Oeste</span><span style="color:#1F6E3A; font-weight:600;">Activo</span><span style="font-size:11px; color:#13407A; font-weight:600; cursor:pointer;">Editar</span>
+            </div>
+            <div style="display:grid; grid-template-columns:1.8fr 2fr 1.2fr 1.4fr 0.9fr 0.7fr; padding:11px 18px; font-size:12.5px; border-bottom:1px solid #F3F1EA; align-items:center;">
+              <span style="font-weight:600;">Diego Rocha</span><span style="color:#5B6B82;">drocha.uy@…</span><span><span style="font-size:10px; background:#E6EEF8; color:#13407A; padding:3px 8px; border-radius:99px; font-weight:600;">COLPORTOR</span></span><span style="color:#5B6B82;">Cerro Norte</span><span style="color:#1F6E3A; font-weight:600;">Activo</span><span style="font-size:11px; color:#13407A; font-weight:600; cursor:pointer;">Editar</span>
+            </div>
+            <div style="display:grid; grid-template-columns:1.8fr 2fr 1.2fr 1.4fr 0.9fr 0.7fr; padding:11px 18px; font-size:12.5px; border-bottom:1px solid #F3F1EA; align-items:center; background:#FBF8F1;">
+              <span style="font-weight:600;">Ana Martínez</span><span style="color:#5B6B82;">ana.martinez@…</span><span><span style="font-size:10px; background:#E6EEF8; color:#13407A; padding:3px 8px; border-radius:99px; font-weight:600;">COLPORTOR</span></span><span style="color:#A98330; font-weight:600;">sin zona</span><span style="color:#1F6E3A; font-weight:600;">Activo</span><span style="font-size:11px; color:#13407A; font-weight:600; cursor:pointer;">Elevar</span>
+            </div>
+            <div style="display:grid; grid-template-columns:1.8fr 2fr 1.2fr 1.4fr 0.9fr 0.7fr; padding:11px 18px; font-size:12.5px; border-bottom:1px solid #F3F1EA; align-items:center;">
+              <span style="font-weight:600;">Raquel Domínguez</span><span style="color:#5B6B82;">raqueld@…</span><span><span style="font-size:10px; background:#002856; color:#fff; padding:3px 8px; border-radius:99px; font-weight:600;">COORDINADOR</span></span><span style="color:#5B6B82;">Canelones</span><span style="color:#1F6E3A; font-weight:600;">Activo</span><span style="font-size:11px; color:#13407A; font-weight:600; cursor:pointer;">Editar</span>
+            </div>
+            <div style="display:grid; grid-template-columns:1.8fr 2fr 1.2fr 1.4fr 0.9fr 0.7fr; padding:11px 18px; font-size:12.5px; align-items:center;">
+              <span style="font-weight:600;">Cristian Osorio</span><span style="color:#5B6B82;">cristian.osorio.wt@…</span><span><span style="font-size:10px; background:#C8A24A; color:#002856; padding:3px 8px; border-radius:99px; font-weight:700;">ADMIN</span></span><span style="color:#90A0B7;">Nacional</span><span style="color:#1F6E3A; font-weight:600;">Activo</span><span style="font-size:11px; color:#13407A; font-weight:600; cursor:pointer;">Editar</span>
+            </div>
+          </div>
+
+          <div style="display:flex; flex-direction:column; gap:16px;">
+            <div style="background:#fff; border:1px solid #E3E7EE; border-radius:8px; overflow:hidden;">
+              <div style="padding:14px 16px 10px; border-bottom:1px solid #E3E7EE; font-family:'Source Serif 4',serif; font-size:15px; font-weight:600;">Usuarios nuevos</div>
+              <div style="padding:12px 16px; display:flex; flex-direction:column; gap:10px;">
+                <div style="border:1px solid #E3E7EE; border-radius:6px; padding:11px 12px; display:flex; flex-direction:column; gap:4px;">
+                  <span style="font-size:12.5px; font-weight:600;">Ana Martínez</span>
+                  <span style="font-size:11px; color:#5B6B82;">hace 2 días · colportora por defecto · zona: la asigna su coordinador</span>
+                  <div style="display:flex; gap:8px; margin-top:4px;">
+                    <span style="font-size:11px; font-weight:600; color:#fff; background:#002856; padding:5px 12px; border-radius:5px; cursor:pointer;">Elevar permisos</span>
+                    <span style="font-size:11px; font-weight:600; color:#A8312A; border:1px solid #E3E7EE; padding:5px 12px; border-radius:5px; cursor:pointer;">Desactivar</span>
+                  </div>
+                </div>
+                <div style="border:1px solid #E3E7EE; border-radius:6px; padding:11px 12px; display:flex; flex-direction:column; gap:4px;">
+                  <span style="font-size:12.5px; font-weight:600;">Pablo Ferreira</span>
+                  <span style="font-size:11px; color:#5B6B82;">se registró hoy · colportor por defecto · zona pendiente (coordinador)</span>
+                  <div style="display:flex; gap:8px; margin-top:4px;">
+                    <span style="font-size:11px; font-weight:600; color:#fff; background:#002856; padding:5px 12px; border-radius:5px; cursor:pointer;">Elevar permisos</span>
+                    <span style="font-size:11px; font-weight:600; color:#A8312A; border:1px solid #E3E7EE; padding:5px 12px; border-radius:5px; cursor:pointer;">Desactivar</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div style="background:#F3F1EA; border-radius:8px; padding:13px 15px; font-size:11.5px; color:#2A3A52; line-height:1.6;"><b style="color:#002856;">Roles:</b> todo usuario nuevo entra como Colportor. El admin solo eleva permisos (a Coordinador o Admin). Las zonas las asigna el coordinador de cada región; los pedidos y tickets también los autoriza el coordinador.</div>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+
+    <!-- ════════════ CATÁLOGO ════════════ -->
+    <sc-if value="{{ show.catalogo }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="Admin · Catálogo" style="position:absolute; inset:0; overflow:auto; padding:20px 22px; display:flex; flex-direction:column; gap:16px;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <h2 style="font-family:'Source Serif 4',serif; font-size:21px; font-weight:600; margin:0;">Catálogo de productos</h2>
+          <span style="font-size:12px; font-weight:600; color:#fff; background:#002856; padding:9px 16px; border-radius:6px; cursor:pointer;">+ Nuevo producto</span>
+        </div>
+        <div style="display:flex; gap:8px;">
+          <span style="font-size:12px; font-weight:600; background:#002856; color:#fff; padding:7px 14px; border-radius:999px; cursor:pointer;">Todos · 24</span>
+          <span style="font-size:12px; font-weight:600; background:#fff; color:#2A3A52; border:1px solid #E3E7EE; padding:7px 14px; border-radius:999px; cursor:pointer;">Salud</span>
+          <span style="font-size:12px; font-weight:600; background:#fff; color:#2A3A52; border:1px solid #E3E7EE; padding:7px 14px; border-radius:999px; cursor:pointer;">Familia</span>
+          <span style="font-size:12px; font-weight:600; background:#fff; color:#2A3A52; border:1px solid #E3E7EE; padding:7px 14px; border-radius:999px; cursor:pointer;">Infantil</span>
+          <span style="font-size:12px; font-weight:600; background:#fff; color:#2A3A52; border:1px solid #E3E7EE; padding:7px 14px; border-radius:999px; cursor:pointer;">Espiritual</span>
+          <span style="font-size:12px; font-weight:600; background:#fff; color:#2A3A52; border:1px solid #E3E7EE; padding:7px 14px; border-radius:999px; cursor:pointer;">Misioneros</span>
+        </div>
+
+        <div style="background:#fff; border:1px solid #E3E7EE; border-radius:8px; overflow:hidden;">
+          <div style="display:grid; grid-template-columns:2.2fr 1.1fr 1fr 1fr 1fr 0.9fr 0.7fr; padding:10px 18px; font-size:10px; letter-spacing:.1em; color:#5B6B82; font-weight:600; border-bottom:1px solid #E3E7EE;">
+            <span>PRODUCTO</span><span>CATEGORÍA</span><span>PRECIO BASE</span><span>BONIFICABLE</span><span>MISIONERO</span><span>ESTADO</span><span></span>
+          </div>
+          <div style="display:grid; grid-template-columns:2.2fr 1.1fr 1fr 1fr 1fr 0.9fr 0.7fr; padding:12px 18px; font-size:12.5px; border-bottom:1px solid #F3F1EA; align-items:center;">
+            <span style="display:flex; align-items:center; gap:10px;"><span style="width:30px; height:40px; border-radius:3px; background:#E8EEF3 repeating-linear-gradient(45deg, rgba(14,26,43,.06) 0 3px, transparent 3px 7px); border:1px solid #CFD6E1; flex:none;"></span><span style="font-weight:600;">El Deseado de Todas las Gentes</span></span>
+            <span style="color:#5B6B82;">Espiritual</span><span style="font-family:'JetBrains Mono',monospace;">$U 1.450</span><span style="color:#1F6E3A; font-weight:600;">✓ Sí</span><span style="color:#90A0B7;">—</span><span style="color:#1F6E3A; font-weight:600;">Activo</span><span style="font-size:11px; color:#13407A; font-weight:600; cursor:pointer;">Editar</span>
+          </div>
+          <div style="display:grid; grid-template-columns:2.2fr 1.1fr 1fr 1fr 1fr 0.9fr 0.7fr; padding:12px 18px; font-size:12.5px; border-bottom:1px solid #F3F1EA; align-items:center;">
+            <span style="display:flex; align-items:center; gap:10px;"><span style="width:30px; height:40px; border-radius:3px; background:#E8EEF3 repeating-linear-gradient(45deg, rgba(14,26,43,.06) 0 3px, transparent 3px 7px); border:1px solid #CFD6E1; flex:none;"></span><span style="font-weight:600;">Vida Sana · colección 3 tomos</span></span>
+            <span style="color:#5B6B82;">Salud</span><span style="font-family:'JetBrains Mono',monospace;">$U 2.900</span><span style="color:#1F6E3A; font-weight:600;">✓ Sí</span><span style="color:#90A0B7;">—</span><span style="color:#1F6E3A; font-weight:600;">Activo</span><span style="font-size:11px; color:#13407A; font-weight:600; cursor:pointer;">Editar</span>
+          </div>
+          <div style="display:grid; grid-template-columns:2.2fr 1.1fr 1fr 1fr 1fr 0.9fr 0.7fr; padding:12px 18px; font-size:12.5px; border-bottom:1px solid #F3F1EA; align-items:center;">
+            <span style="display:flex; align-items:center; gap:10px;"><span style="width:30px; height:40px; border-radius:3px; background:#E8EEF3 repeating-linear-gradient(45deg, rgba(14,26,43,.06) 0 3px, transparent 3px 7px); border:1px solid #CFD6E1; flex:none;"></span><span style="font-weight:600;">Historias para Niños · serie</span></span>
+            <span style="color:#5B6B82;">Infantil</span><span style="font-family:'JetBrains Mono',monospace;">$U 1.980</span><span style="color:#1F6E3A; font-weight:600;">✓ Sí</span><span style="color:#90A0B7;">—</span><span style="color:#1F6E3A; font-weight:600;">Activo</span><span style="font-size:11px; color:#13407A; font-weight:600; cursor:pointer;">Editar</span>
+          </div>
+          <div style="display:grid; grid-template-columns:2.2fr 1.1fr 1fr 1fr 1fr 0.9fr 0.7fr; padding:12px 18px; font-size:12.5px; border-bottom:1px solid #F3F1EA; align-items:center;">
+            <span style="display:flex; align-items:center; gap:10px;"><span style="width:30px; height:40px; border-radius:3px; background:#E8EEF3 repeating-linear-gradient(45deg, rgba(14,26,43,.06) 0 3px, transparent 3px 7px); border:1px solid #CFD6E1; flex:none;"></span><span style="font-weight:600;">La Gran Esperanza</span></span>
+            <span style="color:#5B6B82;">Espiritual</span><span style="font-family:'JetBrains Mono',monospace;">$U 180</span><span style="color:#90A0B7;">— No</span><span style="color:#A98330; font-weight:600;">✦ Sí</span><span style="color:#1F6E3A; font-weight:600;">Activo</span><span style="font-size:11px; color:#13407A; font-weight:600; cursor:pointer;">Editar</span>
+          </div>
+          <div style="display:grid; grid-template-columns:2.2fr 1.1fr 1fr 1fr 1fr 0.9fr 0.7fr; padding:12px 18px; font-size:12.5px; border-bottom:1px solid #F3F1EA; align-items:center;">
+            <span style="display:flex; align-items:center; gap:10px;"><span style="width:30px; height:40px; border-radius:3px; background:#E8EEF3 repeating-linear-gradient(45deg, rgba(14,26,43,.06) 0 3px, transparent 3px 7px); border:1px solid #CFD6E1; flex:none;"></span><span style="font-weight:600;">Paz para Vivir</span></span>
+            <span style="color:#5B6B82;">Familia</span><span style="font-family:'JetBrains Mono',monospace;">$U 1.120</span><span style="color:#1F6E3A; font-weight:600;">✓ Sí</span><span style="color:#90A0B7;">—</span><span style="color:#1F6E3A; font-weight:600;">Activo</span><span style="font-size:11px; color:#13407A; font-weight:600; cursor:pointer;">Editar</span>
+          </div>
+          <div style="display:grid; grid-template-columns:2.2fr 1.1fr 1fr 1fr 1fr 0.9fr 0.7fr; padding:12px 18px; font-size:12.5px; align-items:center; opacity:.6;">
+            <span style="display:flex; align-items:center; gap:10px;"><span style="width:30px; height:40px; border-radius:3px; background:#E8EEF3 repeating-linear-gradient(45deg, rgba(14,26,43,.06) 0 3px, transparent 3px 7px); border:1px solid #CFD6E1; flex:none;"></span><span style="font-weight:600;">Salud y Hogar · ed. 2023</span></span>
+            <span style="color:#5B6B82;">Salud</span><span style="font-family:'JetBrains Mono',monospace;">$U 2.400</span><span style="color:#1F6E3A; font-weight:600;">✓ Sí</span><span style="color:#90A0B7;">—</span><span style="color:#A8312A; font-weight:600;">De baja</span><span style="font-size:11px; color:#13407A; font-weight:600; cursor:pointer;">Editar</span>
+          </div>
+        </div>
+        <div style="background:#F3F1EA; border-radius:8px; padding:13px 15px; font-size:11.5px; color:#2A3A52; line-height:1.6; max-width:760px;"><b style="color:#002856;">Nota:</b> el precio base es nacional. Los precios de venta por zona se configuran dentro de cada campaña (lo hace el coordinador). Los cambios de catálogo se distribuyen a todos los dispositivos por delta-sync.</div>
+      </div>
+    </sc-if>
+
+    <!-- ════════════ BECAS ════════════ -->
+    <sc-if value="{{ show.becas }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="Admin · Becas" style="position:absolute; inset:0; overflow:auto; padding:20px 22px; display:flex; flex-direction:column; gap:16px;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <h2 style="font-family:'Source Serif 4',serif; font-size:21px; font-weight:600; margin:0;">Becas de estudio</h2>
+          <span style="font-size:12px; font-weight:600; color:#fff; background:#002856; padding:9px 16px; border-radius:6px; cursor:pointer;">+ Nueva meta por carrera</span>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:14px; max-width:760px;">
+          <div style="background:#fff; border:1px solid #E3E7EE; border-radius:8px; padding:14px 16px;">
+            <div style="font-size:10px; letter-spacing:.13em; color:#5B6B82; font-weight:600;">BECARIOS ACTIVOS</div>
+            <div style="font-family:'Source Serif 4',serif; font-size:26px; font-weight:600; color:#002856;">41</div>
+          </div>
+          <div style="background:#fff; border:1px solid #E3E7EE; border-radius:8px; padding:14px 16px;">
+            <div style="font-size:10px; letter-spacing:.13em; color:#5B6B82; font-weight:600;">META CUMPLIDA</div>
+            <div style="font-family:'Source Serif 4',serif; font-size:26px; font-weight:600; color:#1F6E3A;">9</div>
+          </div>
+          <div style="background:#fff; border:1px solid #E3E7EE; border-radius:8px; padding:14px 16px;">
+            <div style="font-size:10px; letter-spacing:.13em; color:#5B6B82; font-weight:600;">FONDO GENERADO</div>
+            <div style="font-family:'Source Serif 4',serif; font-size:26px; font-weight:600; color:#A98330;">$U 318.9K</div>
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 320px; gap:16px; align-items:start;">
+          <div style="background:#fff; border:1px solid #E3E7EE; border-radius:8px; overflow:hidden;">
+            <div style="display:grid; grid-template-columns:1.7fr 1.5fr 1fr 1fr 1.3fr 0.9fr; padding:10px 18px; font-size:10px; letter-spacing:.1em; color:#5B6B82; font-weight:600; border-bottom:1px solid #E3E7EE;">
+              <span>BECARIO</span><span>CARRERA</span><span>VENDIDO</span><span>META</span><span>AVANCE</span><span>ESTADO</span>
+            </div>
+            <div style="display:grid; grid-template-columns:1.7fr 1.5fr 1fr 1fr 1.3fr 0.9fr; padding:12px 18px; font-size:12.5px; border-bottom:1px solid #F3F1EA; align-items:center;">
+              <span style="font-weight:600;">Lucía Silvera</span><span style="color:#5B6B82;">Enfermería · UAP</span><span style="font-family:'JetBrains Mono',monospace;">$U 96K</span><span style="font-family:'JetBrains Mono',monospace;">$U 96K</span>
+              <span style="display:flex; align-items:center; gap:8px;"><span style="flex:1; height:5px; background:#F3F1EA; border-radius:3px;"><span style="display:block; width:100%; height:5px; background:#1F6E3A; border-radius:3px;"></span></span><span style="font-size:11px; font-weight:600; color:#1F6E3A;">100%</span></span>
+              <span><span style="font-size:10px; background:#E3EFE6; color:#1F6E3A; padding:3px 8px; border-radius:99px; font-weight:600;">CUMPLIDA</span></span>
+            </div>
+            <div style="display:grid; grid-template-columns:1.7fr 1.5fr 1fr 1fr 1.3fr 0.9fr; padding:12px 18px; font-size:12.5px; border-bottom:1px solid #F3F1EA; align-items:center;">
+              <span style="font-weight:600;">Diego Rocha</span><span style="color:#5B6B82;">Teología · UAP</span><span style="font-family:'JetBrains Mono',monospace;">$U 69K</span><span style="font-family:'JetBrains Mono',monospace;">$U 96K</span>
+              <span style="display:flex; align-items:center; gap:8px;"><span style="flex:1; height:5px; background:#F3F1EA; border-radius:3px;"><span style="display:block; width:72%; height:5px; background:#C8A24A; border-radius:3px;"></span></span><span style="font-size:11px; font-weight:600; color:#A98330;">72%</span></span>
+              <span><span style="font-size:10px; background:#FBF1DA; color:#A98330; padding:3px 8px; border-radius:99px; font-weight:600;">EN CURSO</span></span>
+            </div>
+            <div style="display:grid; grid-template-columns:1.7fr 1.5fr 1fr 1fr 1.3fr 0.9fr; padding:12px 18px; font-size:12.5px; border-bottom:1px solid #F3F1EA; align-items:center;">
+              <span style="font-weight:600;">Melina Vázquez</span><span style="color:#5B6B82;">Medicina · UAP</span><span style="font-family:'JetBrains Mono',monospace;">$U 61K</span><span style="font-family:'JetBrains Mono',monospace;">$U 96K</span>
+              <span style="display:flex; align-items:center; gap:8px;"><span style="flex:1; height:5px; background:#F3F1EA; border-radius:3px;"><span style="display:block; width:64%; height:5px; background:#C8A24A; border-radius:3px;"></span></span><span style="font-size:11px; font-weight:600; color:#A98330;">64%</span></span>
+              <span><span style="font-size:10px; background:#FBF1DA; color:#A98330; padding:3px 8px; border-radius:99px; font-weight:600;">EN CURSO</span></span>
+            </div>
+            <div style="display:grid; grid-template-columns:1.7fr 1.5fr 1fr 1fr 1.3fr 0.9fr; padding:12px 18px; font-size:12.5px; align-items:center; background:#FBF8F1;">
+              <span style="font-weight:600;">Joel Cabrera</span><span style="color:#5B6B82;">Ing. Sistemas · UAP</span><span style="font-family:'JetBrains Mono',monospace;">$U 27K</span><span style="font-family:'JetBrains Mono',monospace;">$U 96K</span>
+              <span style="display:flex; align-items:center; gap:8px;"><span style="flex:1; height:5px; background:#F3F1EA; border-radius:3px;"><span style="display:block; width:28%; height:5px; background:#A8312A; border-radius:3px;"></span></span><span style="font-size:11px; font-weight:600; color:#A8312A;">28%</span></span>
+              <span><span style="font-size:10px; background:#F7E4E2; color:#A8312A; padding:3px 8px; border-radius:99px; font-weight:600;">BAJO RITMO</span></span>
+            </div>
+          </div>
+
+          <div style="background:#fff; border:1px solid #E3E7EE; border-radius:8px; overflow:hidden;">
+            <div style="padding:14px 16px 10px; border-bottom:1px solid #E3E7EE; font-family:'Source Serif 4',serif; font-size:15px; font-weight:600;">Metas por carrera</div>
+            <div style="padding:8px 16px 12px; display:flex; flex-direction:column;">
+              <div style="display:flex; justify-content:space-between; align-items:center; padding:9px 0; border-bottom:1px solid #F3F1EA;">
+                <div style="display:flex; flex-direction:column;"><span style="font-size:12.5px; font-weight:600;">Medicina</span><span style="font-size:11px; color:#90A0B7;">7 becarios</span></div>
+                <span style="font-family:'JetBrains Mono',monospace; font-size:12.5px;">$U 96.000</span>
+              </div>
+              <div style="display:flex; justify-content:space-between; align-items:center; padding:9px 0; border-bottom:1px solid #F3F1EA;">
+                <div style="display:flex; flex-direction:column;"><span style="font-size:12.5px; font-weight:600;">Enfermería</span><span style="font-size:11px; color:#90A0B7;">12 becarios</span></div>
+                <span style="font-family:'JetBrains Mono',monospace; font-size:12.5px;">$U 96.000</span>
+              </div>
+              <div style="display:flex; justify-content:space-between; align-items:center; padding:9px 0; border-bottom:1px solid #F3F1EA;">
+                <div style="display:flex; flex-direction:column;"><span style="font-size:12.5px; font-weight:600;">Teología</span><span style="font-size:11px; color:#90A0B7;">15 becarios</span></div>
+                <span style="font-family:'JetBrains Mono',monospace; font-size:12.5px;">$U 96.000</span>
+              </div>
+              <div style="display:flex; justify-content:space-between; align-items:center; padding:9px 0;">
+                <div style="display:flex; flex-direction:column;"><span style="font-size:12.5px; font-weight:600;">Otras carreras</span><span style="font-size:11px; color:#90A0B7;">7 becarios</span></div>
+                <span style="font-family:'JetBrains Mono',monospace; font-size:12.5px;">$U 110.000</span>
+              </div>
+            </div>
+            <div style="border-top:1px solid #E3E7EE; padding:12px 16px; font-size:11.5px; color:#2A3A52; line-height:1.6; background:#F3F1EA;">La meta define el monto de venta que habilita la beca completa del semestre. Editable por campaña.</div>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+
+    <!-- ════════════ REPORTES ════════════ -->
+    <sc-if value="{{ show.reportes }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="Admin · Reportes" style="position:absolute; inset:0; overflow:auto; padding:20px 22px; display:flex; flex-direction:column; gap:16px;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <h2 style="font-family:'Source Serif 4',serif; font-size:21px; font-weight:600; margin:0;">Reportes y mapa nacional</h2>
+          <div style="display:flex; gap:8px;">
+            <span style="font-size:12px; font-weight:600; background:#002856; color:#fff; padding:7px 14px; border-radius:999px; cursor:pointer;">Campaña</span>
+            <span style="font-size:12px; font-weight:600; background:#fff; color:#2A3A52; border:1px solid #E3E7EE; padding:7px 14px; border-radius:999px; cursor:pointer;">Mes</span>
+            <span style="font-size:12px; font-weight:600; background:#fff; color:#2A3A52; border:1px solid #E3E7EE; padding:7px 14px; border-radius:999px; cursor:pointer;">Semana</span>
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1.4fr 1fr; gap:16px; align-items:start;">
+          <div style="background:#fff; border:1px solid #E3E7EE; border-radius:8px; overflow:hidden;">
+            <div style="padding:14px 18px 10px; display:flex; justify-content:space-between; align-items:baseline;">
+              <span style="font-family:'Source Serif 4',serif; font-size:15px; font-weight:600;">Ventas por ciudad · Uruguay</span>
+              <span style="font-size:11px; color:#90A0B7;">solo datos agregados, sin PII</span>
+            </div>
+            <div style="height:440px; background:#E8EEF3 repeating-linear-gradient(45deg, rgba(14,26,43,.035) 0 10px, transparent 10px 26px); position:relative;">
+              <span style="position:absolute; inset:0; display:grid; place-items:center; font-family:'JetBrains Mono',monospace; font-size:12px; color:#90A0B7;">[ mapa OSM · Uruguay · burbujas por ciudad ]</span>
+              <div style="position:absolute; left:34%; top:64%; display:flex; flex-direction:column; align-items:center; gap:4px;">
+                <div style="width:46px; height:46px; border-radius:50%; background:#002856; color:#fff; display:grid; place-items:center; font-size:13px; font-weight:600; border:3px solid #fff; box-shadow:0 2px 8px rgba(0,40,86,.35);">24</div>
+                <span style="font-size:11px; font-weight:600; background:#fff; padding:2px 8px; border-radius:4px; box-shadow:0 1px 3px rgba(0,0,0,.12);">Montevideo</span>
+              </div>
+              <div style="position:absolute; left:48%; top:48%; display:flex; flex-direction:column; align-items:center; gap:4px;">
+                <div style="width:38px; height:38px; border-radius:50%; background:#13407A; color:#fff; display:grid; place-items:center; font-size:12px; font-weight:600; border:3px solid #fff; box-shadow:0 2px 8px rgba(0,40,86,.35);">11</div>
+                <span style="font-size:11px; font-weight:600; background:#fff; padding:2px 8px; border-radius:4px; box-shadow:0 1px 3px rgba(0,0,0,.12);">Florida</span>
+              </div>
+              <div style="position:absolute; left:64%; top:26%; display:flex; flex-direction:column; align-items:center; gap:4px;">
+                <div style="width:34px; height:34px; border-radius:50%; background:#3B5C8C; color:#fff; display:grid; place-items:center; font-size:12px; font-weight:600; border:3px solid #fff; box-shadow:0 2px 8px rgba(0,40,86,.35);">8</div>
+                <span style="font-size:11px; font-weight:600; background:#fff; padding:2px 8px; border-radius:4px; box-shadow:0 1px 3px rgba(0,0,0,.12);">Rivera</span>
+              </div>
+              <div style="position:absolute; left:20%; top:32%; display:flex; flex-direction:column; align-items:center; gap:4px;">
+                <div style="width:34px; height:34px; border-radius:50%; background:#3B5C8C; color:#fff; display:grid; place-items:center; font-size:12px; font-weight:600; border:3px solid #fff; box-shadow:0 2px 8px rgba(0,40,86,.35);">7</div>
+                <span style="font-size:11px; font-weight:600; background:#fff; padding:2px 8px; border-radius:4px; box-shadow:0 1px 3px rgba(0,0,0,.12);">Paysandú</span>
+              </div>
+              <div style="position:absolute; left:16px; bottom:14px; background:rgba(255,255,255,.96); border:1px solid #E3E7EE; border-radius:6px; padding:9px 13px; font-size:11px; color:#2A3A52; box-shadow:0 2px 8px rgba(14,26,43,.06); display:flex; flex-direction:column; gap:4px;">
+                <div style="display:flex; align-items:center; gap:8px;"><span style="width:11px; height:11px; border-radius:50%; background:#002856;"></span>&gt; $U 300K</div>
+                <div style="display:flex; align-items:center; gap:8px;"><span style="width:11px; height:11px; border-radius:50%; background:#13407A;"></span>$U 100–300K</div>
+                <div style="display:flex; align-items:center; gap:8px;"><span style="width:11px; height:11px; border-radius:50%; background:#3B5C8C;"></span>&lt; $U 100K</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex; flex-direction:column; gap:16px;">
+            <div style="background:#fff; border:1px solid #E3E7EE; border-radius:8px; padding:16px 18px; display:flex; flex-direction:column; gap:12px;">
+              <span style="font-family:'Source Serif 4',serif; font-size:15px; font-weight:600;">Ventas por ciudad</span>
+              <div style="display:flex; flex-direction:column; gap:9px;">
+                <div style="display:flex; flex-direction:column; gap:3px;">
+                  <div style="display:flex; justify-content:space-between; font-size:12px;"><span style="font-weight:600;">Montevideo</span><span style="font-family:'JetBrains Mono',monospace;">$U 738K</span></div>
+                  <div style="height:7px; background:#F3F1EA; border-radius:4px;"><div style="width:100%; height:7px; background:#002856; border-radius:4px;"></div></div>
+                </div>
+                <div style="display:flex; flex-direction:column; gap:3px;">
+                  <div style="display:flex; justify-content:space-between; font-size:12px;"><span style="font-weight:600;">Canelones</span><span style="font-family:'JetBrains Mono',monospace;">$U 512K</span></div>
+                  <div style="height:7px; background:#F3F1EA; border-radius:4px;"><div style="width:69%; height:7px; background:#13407A; border-radius:4px;"></div></div>
+                </div>
+                <div style="display:flex; flex-direction:column; gap:3px;">
+                  <div style="display:flex; justify-content:space-between; font-size:12px;"><span style="font-weight:600;">Florida</span><span style="font-family:'JetBrains Mono',monospace;">$U 289K</span></div>
+                  <div style="height:7px; background:#F3F1EA; border-radius:4px;"><div style="width:39%; height:7px; background:#3B5C8C; border-radius:4px;"></div></div>
+                </div>
+                <div style="display:flex; flex-direction:column; gap:3px;">
+                  <div style="display:flex; justify-content:space-between; font-size:12px;"><span style="font-weight:600;">Rivera</span><span style="font-family:'JetBrains Mono',monospace;">$U 184K</span></div>
+                  <div style="height:7px; background:#F3F1EA; border-radius:4px;"><div style="width:25%; height:7px; background:#3B5C8C; border-radius:4px;"></div></div>
+                </div>
+                <div style="display:flex; flex-direction:column; gap:3px;">
+                  <div style="display:flex; justify-content:space-between; font-size:12px;"><span style="font-weight:600;">Paysandú</span><span style="font-family:'JetBrains Mono',monospace;">$U 119K</span></div>
+                  <div style="height:7px; background:#F3F1EA; border-radius:4px;"><div style="width:16%; height:7px; background:#90A0B7; border-radius:4px;"></div></div>
+                </div>
+              </div>
+            </div>
+            <div style="background:#fff; border:1px solid #E3E7EE; border-radius:8px; padding:16px 18px; display:flex; flex-direction:column; gap:10px;">
+              <span style="font-family:'Source Serif 4',serif; font-size:15px; font-weight:600;">Horas trabajadas</span>
+              <div style="display:flex; justify-content:space-between; font-size:12.5px;"><span style="color:#5B6B82;">Total campaña</span><span style="font-family:'JetBrains Mono',monospace; font-weight:500;">9.860 h</span></div>
+              <div style="display:flex; justify-content:space-between; font-size:12.5px;"><span style="color:#5B6B82;">Promedio semanal / colportor</span><span style="font-family:'JetBrains Mono',monospace; font-weight:500;">31,2 h</span></div>
+              <div style="display:flex; justify-content:space-between; font-size:12.5px;"><span style="color:#5B6B82;">Jornadas con acompañamiento</span><span style="font-family:'JetBrains Mono',monospace; font-weight:500;">18%</span></div>
+            </div>
+            <div style="background:#fff; border:1px solid #E3E7EE; border-radius:8px; padding:16px 18px; display:flex; flex-direction:column; gap:10px;">
+              <span style="font-family:'Source Serif 4',serif; font-size:15px; font-weight:600;">Exportar</span>
+              <div style="display:flex; gap:8px;">
+                <span style="flex:1; text-align:center; font-size:12px; font-weight:600; color:#fff; background:#002856; padding:9px 0; border-radius:6px; cursor:pointer;">Informe PDF</span>
+                <span style="flex:1; text-align:center; font-size:12px; font-weight:600; color:#002856; border:1px solid #CFD6E1; padding:9px 0; border-radius:6px; cursor:pointer;">Datos CSV</span>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { tab: 'inicio' };
+
+  renderVals() {
+    const tabs = ['inicio', 'campanas', 'usuarios', 'catalogo', 'becas', 'reportes'];
+    const labels = {
+      inicio: 'Inicio', campanas: 'Campañas', usuarios: 'Usuarios',
+      catalogo: 'Catálogo', becas: 'Becas', reportes: 'Reportes'
+    };
+    const t = this.state.tab;
+    const navItems = tabs.map((k) => ({
+      label: labels[k],
+      go: () => this.setState({ tab: k }),
+      style: k === t
+        ? { padding: '8px 14px', borderRadius: 6, background: '#E6EEF8', color: '#002856', fontWeight: 600, cursor: 'pointer' }
+        : { padding: '8px 14px', color: '#2A3A52', cursor: 'pointer' }
+    }));
+    const show = {};
+    tabs.forEach((k) => { show[k] = k === t; });
+    return { navItems, show };
+  }
+}
+</script>
+</body>
+</html>

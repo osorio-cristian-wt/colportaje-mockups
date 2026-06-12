@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mockups colportajeApp · Revisión</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --brand:#002856; --gold:#F4C430; }
+  * { box-sizing:border-box; }
+  body { margin:0; min-height:100vh; background:#0E1A2B;
+    font-family:'Inter',system-ui,sans-serif; color:#1A2A40;
+    display:flex; align-items:center; justify-content:center; padding:32px 18px; }
+  .wrap { max-width:880px; width:100%; }
+  header { text-align:center; color:#fff; margin-bottom:30px; }
+  header h1 { font-family:'Source Serif 4',Georgia,serif; font-size:30px; margin:0 0 8px; }
+  header p { margin:0; color:#9FB2CC; font-size:15px; line-height:1.5; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:18px; }
+  .card { background:#FAFAF7; border-radius:16px; padding:22px; text-decoration:none; color:inherit;
+    border:1px solid rgba(255,255,255,.08); box-shadow:0 10px 30px rgba(0,0,0,.25);
+    transition:transform .15s, box-shadow .15s; display:flex; flex-direction:column; gap:10px; }
+  .card:hover { transform:translateY(-4px); box-shadow:0 16px 40px rgba(0,0,0,.4); }
+  .card .ico { width:46px; height:46px; border-radius:12px; background:var(--brand); color:#fff;
+    display:flex; align-items:center; justify-content:center; font-size:22px; }
+  .card h2 { font-family:'Source Serif 4',Georgia,serif; font-size:19px; margin:0; color:var(--brand); }
+  .card .tabs { font-size:12.5px; color:#5A6B82; line-height:1.5; }
+  .card .go { margin-top:auto; font-weight:600; color:var(--brand); font-size:14px; }
+  .card .go::after { content:' →'; color:var(--gold); }
+  .note { margin-top:26px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1);
+    border-radius:12px; padding:16px 18px; color:#C7D4E6; font-size:13.5px; line-height:1.6; }
+  .note b { color:#fff; }
+  footer { text-align:center; color:#5A6B82; font-size:12px; margin-top:22px; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Mockups colportajeApp</h1>
+      <p>Borradores para revisión · Unión Uruguaya IASD<br>Elegí una vista. Podés navegar las pestañas y dejar comentarios.</p>
+    </header>
+
+    <div class="grid">
+      <a class="card" href="colportor.html">
+        <div class="ico">📱</div>
+        <h2>App Colportor</h2>
+        <div class="tabs">Mobile · Hoy · Mapa · Agenda · Ventas · Mi cuenta</div>
+        <div class="go">Abrir vista</div>
+      </a>
+      <a class="card" href="admin.html">
+        <div class="ico">🖥️</div>
+        <h2>Panel Admin</h2>
+        <div class="tabs">Escritorio · Inicio · Campañas · Usuarios · Catálogo · Becas · Reportes</div>
+        <div class="go">Abrir vista</div>
+      </a>
+      <a class="card" href="coordinador.html">
+        <div class="ico">🗂️</div>
+        <h2>Panel Coordinador</h2>
+        <div class="tabs">Escritorio · Inicio · Equipo · Stock · Cuentas · Reportes</div>
+        <div class="go">Abrir vista</div>
+      </a>
+    </div>
+
+    <div class="note">
+      <b>Cómo revisar:</b> al abrir cada vista verás un mensaje que resalta las pestañas
+      interactuables. Para dejar feedback, usá el botón <b>💬 Comentar</b> (abajo a la derecha):
+      arrastrás sobre la zona a comentar y escribís tu observación. El botón <b>?</b> reabre las instrucciones.
+    </div>
+    <footer>Prototipos HTML · no es la app final</footer>
+  </div>
+</body>
+</html>

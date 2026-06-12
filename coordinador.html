@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<script src="./revision-config.js"></script>
+<script>window.REVISION_VISTA="coordinador";</script>
+<script src="./revision.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&amp;family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+  <style>
+    body { margin:0; background:#FAFAF7; font-family:'Inter',sans-serif; color:#0E1A2B; -webkit-font-smoothing:antialiased; }
+  </style>
+</helmet>
+
+<div data-export-root="true" style="height:100vh; min-width:1280px; display:grid; grid-template-rows:58px 1fr; overflow:hidden;">
+
+  <!-- ============ TOPBAR ============ -->
+  <div style="background:#fff; border-bottom:1px solid #E3E7EE; display:flex; align-items:center; justify-content:space-between; padding:0 22px; z-index:10;">
+    <div style="display:flex; align-items:center; gap:24px;">
+      <div style="display:flex; align-items:center; gap:11px;">
+        <div style="width:32px; height:32px; border-radius:50%; background:#002856; color:#fff; display:grid; place-items:center; font-family:'Source Serif 4',serif; font-size:12px; font-weight:600;">UU</div>
+        <span style="font-family:'Source Serif 4',serif; font-size:15px; font-weight:600;">Colportaje</span>
+        <span style="font-size:10px; letter-spacing:.12em; font-weight:700; color:#13407A; background:#E6EEF8; padding:3px 9px; border-radius:99px;">COORDINADOR</span>
+      </div>
+      <div style="display:flex; gap:4px; font-size:13px;">
+        <sc-for list="{{ navItems }}" as="ni" hint-placeholder-count="5">
+          <span style="{{ ni.style }}" onClick="{{ ni.go }}">{{ ni.label }}</span>
+        </sc-for>
+      </div>
+    </div>
+    <div style="display:flex; align-items:center; gap:12px;">
+      <span style="font-size:12px; color:#5B6B82; border:1px solid #E3E7EE; padding:7px 12px; border-radius:6px; background:#fff; cursor:pointer;">Montevideo Oeste · Verano 2026 ▾</span>
+      <div style="width:32px; height:32px; border-radius:50%; background:#E6EEF8; color:#002856; display:grid; place-items:center; font-size:12px; font-weight:600;">MP</div>
+    </div>
+  </div>
+
+  <!-- ============ CONTENT ============ -->
+  <div style="position:relative; overflow:hidden;">
+
+    <!-- ════════════ INICIO ════════════ -->
+    <sc-if value="{{ show.inicio }}" hint-placeholder-val="{{ true }}">
+      <div data-screen-label="Coordinador · Inicio" style="position:absolute; inset:0; overflow:auto; padding:20px 22px; display:flex; flex-direction:column; gap:16px;">
+        <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:14px;">
+          <div style="background:#fff; border:1px solid #E3E7EE; border-radius:8px; padding:16px 18px;">
+            <div style="font-size:10px; letter-spacing:.13em; color:#5B6B82; font-weight:600;">VENTAS DE LA REGIÓN</div>
+            <div style="font-family:'Source Serif 4',serif; font-size:28px; font-weight:600; color:#002856;">$U 612K</div>
+            <div style="font-size:11px; color:#1F6E3A;">▲ 9% semana</div>
+          </div>
+          <div style="background:#fff; border:1px solid #E3E7EE; border-radius:8px; padding:16px 18px;">
+            <div style="font-size:10px; letter-spacing:.13em; color:#5B6B82; font-weight:600;">EN JORNADA AHORA</div>
+            <div style="font-family:'Source Serif 4',serif; font-size:28px; font-weight:600; color:#002856;">11 <span style="font-size:15px; color:#90A0B7;">/ 14</span></div>
+            <div style="font-size:11px; color:#5B6B82;">2 finalizaron · 1 sin iniciar</div>
+          </div>
+          <div style="background:#fff; border:1px solid #E3E7EE; border-radius:8px; padding:16px 18px;">
+            <div style="font-size:10px; letter-spacing:.13em; color:#5B6B82; font-weight:600;">HORAS ESTA SEMANA</div>
+            <div style="font-family:'Source Serif 4',serif; font-size:28px; font-weight:600; color:#002856;">318</div>
+            <div style="font-size:11px; color:#5B6B82;">promedio 22,7 h / colportor</div>
+          </div>
+          <div style="background:#fff; border:1px solid #E3E7EE; border-radius:8px; padding:16px 18px;">
+            <div style="font-size:10px; letter-spacing:.13em; color:#5B6B82; font-weight:600;">TICKETS POR VALIDAR</div>
+            <div style="font-family:'Source Serif 4',serif; font-size:28px; font-weight:600; color:#A98330;">4</div>
+            <div style="font-size:11px; color:#A98330;">el más antiguo: hace 2 días</div>
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 340px; gap:16px; align-items:start;">
+          <div style="display:flex; flex-direction:column; gap:16px;">
+            <div style="background:#fff; border:1px solid #E3E7EE; border-radius:8px; overflow:hidden;">
+              <div style="padding:14px 18px 10px; display:flex; justify-content:space-between; align-items:baseline;">
+                <span style="font-family:'Source Serif 4',serif; font-size:15px; font-weight:600;">Actividad de hoy</span>
+                <span style="font-size:11px; color:#13407A; font-weight:600; cursor:pointer;" onClick="{{ goEquipo }}">Ver equipo →</span>
+              </div>
+              <div style="display:grid; grid-template-columns:1.8fr 1.4fr 1fr 1fr 1.1fr; padding:7px 18px; font-size:10px; letter-spacing:.1em; color:#5B6B82; font-weight:600; border-bottom:1px solid #E3E7EE;">
+                <span>COLPORTOR</span><span>ZONA</span><span>HORAS HOY</span><span>VENTAS HOY</span><span>ESTADO</span>
+              </div>
+              <div style="display:grid; grid-template-columns:1.8fr 1.4fr 1fr 1fr 1.1fr; padding:11px 18px; font-size:12.5px; border-bottom:1px solid #F3F1EA; align-items:center;">
+                <span style="font-weight:600;">Diego Rocha</span><span style="color:#5B6B82;">Cerro Norte</span><span style="font-family:'JetBrains Mono',monospace;">5,2 h</span><span style="font-family:'JetBrains Mono',monospace;">$U 4.350</span>
+                <span style="display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:600; color:#1F6E3A;"><span style="width:7px; height:7px; border-radius:50%; background:#1F6E3A;"></span>En jornada</span>
+              </div>
+              <div style="display:grid; grid-template-columns:1.8fr 1.4fr 1fr 1fr 1.1fr; padding:11px 18px; font-size:12.5px; border-bottom:1px solid #F3F1EA; align-items:center;">
+                <span style="font-weight:600;">Melina Vázquez</span><span style="color:#5B6B82;">La Teja</span><span style="font-family:'JetBrains Mono',monospace;">4,8 h</span><span style="font-family:'JetBrains Mono',monospace;">$U 6.080</span>
+                <span style="display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:600; color:#1F6E3A;"><span style="width:7px; height:7px; border-radius:50%; background:#1F6E3A;"></span>En jornada</span>
+              </div>
+              <div style="display:grid; grid-template-columns:1.8fr 1.4fr 1fr 1fr 1.1fr; padding:11px 18px; font-size:12.5px; border-bottom:1px solid #F3F1EA; align-items:center;">
+                <span style="font-weight:600;">Laura Suárez</span><span style="color:#5B6B82;">Paso de la Arena</span><span style="font-family:'JetBrains Mono',monospace;">6,1 h</span><span style="font-family:'JetBrains Mono',monospace;">$U 2.900</span>
+                <span style="display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:600; color:#5B6B82;"><span style="width:7px; height:7px; border-radius:50%; background:#90A0B7;"></span>Finalizada</span>
+              </div>
+              <div style="display:grid; grid-template-columns:1.8fr 1.4fr 1fr 1fr 1.1fr; padding:11px 18px; font-size:12.5px; border-bottom:1px solid #F3F1EA; align-items:center;">
+                <span style="font-weight:600;">Joel Cabrera</span><span style="color:#5B6B82;">Cerro Norte</span><span style="font-family:'JetBrains Mono',monospace;">3,4 h</span><span style="font-family:'JetBrains Mono',monospace;">$U 1.120</span>
+                <span style="display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:600; color:#1F6E3A;"><span style="width:7px; height:7px; border-radius:50%; background:#1F6E3A;"></span>En jornada</span>
+              </div>
+              <div style="display:grid; grid-template-columns:1.8fr 1.4fr 1fr 1fr 1.1fr; padding:11px 18px; font-size:12.5px; align-items:center; background:#FBF8F1;">
+                <span style="font-weight:600;">Pablo Ferreira</span><span style="color:#5B6B82;">Belvedere</span><span style="font-family:'JetBrains Mono',monospace; color:#90A0B7;">—</span><span style="font-family:'JetBrains Mono',monospace; color:#90A0B7;">—</span>
+                <span style="display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:600; color:#A98330;"><span style="width:7px; height:7px; border-radius:50%; background:#C8A24A;"></span>Sin iniciar</span>
+              </div>
+            </div>
+
+            <div style="background:#fff; border:1px solid #E3E7EE; border-radius:8px; padding:16px 18px;">
+              <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:14px;">
+                <span style="font-family:'Source Serif 4',serif; font-size:15px; font-weight:600;">Avance por zona</span>
+                <span style="font-size:11px; color:#90A0B7;">% de la meta de zona · campaña</span>
+              </div>
+              <div style="display:flex; flex-direction:column; gap:11px;">
+                <div style="display:flex; flex-direction:column; gap:3px;">
+                  <div style="display:flex; justify-content:space-between; font-size:12px;"><span style="font-weight:600;">Cerro Norte</span><span style="font-size:11px; font-weight:600; color:#1F6E3A;">74%</span></div>
+                  <div style="height:7px; background:#F3F1EA; border-radius:4px;"><div style="width:74%; height:7px; background:#002856; border-radius:4px;"></div></div>
+                </div>
+                <div style="display:flex; flex-direction:column; gap:3px;">
+                  <div style="display:flex; justify-content:space-between; font-size:12px;"><span style="font-weight:600;">La Teja</span><span style="font-size:11px; font-weight:600; color:#1F6E3A;">68%</span></div>
+                  <div style="height:7px; background:#F3F1EA; border-radius:4px;"><div style="width:68%; height:7px; background:#13407A; border-radius:4px;"></div></div>
+                </div>
+                <div style="display:flex; flex-direction:column; gap:3px;">
+                  <div style="display:flex; justify-content:space-between; font-size:12px;"><span style="font-weight:600;">Paso de la Arena</span><span style="font-size:11px; font-weight:600; color:#A98330;">55%</span></div>
+                  <div style="height:7px; background:#F3F1EA; border-radius:4px;"><div style="width:55%; height:7px; background:#3B5C8C; border-radius:4px;"></div></div>
+                </div>
+                <div style="display:flex; flex-direction:column; gap:3px;">
+                  <div style="display:flex; justify-content:space-between; font-size:12px;"><span style="font-weight:600;">Belvedere</span><span style="font-size:11px; font-weight:600; color:#A8312A;">38%</span></div>
+                  <div style="height:7px; background:#F3F1EA; border-radius:4px;"><div style="width:38%; height:7px; background:#A8312A; border-radius:4px;"></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="background:#fff; border:1px solid #E3E7EE; border-radius:8px; display:flex; flex-direction:column; overflow:hidden;">
+            <div style="padding:14px 16px 10px; border-bottom:1px solid #E3E7EE; font-family:'Source Serif 4',serif; font-size:15px; font-weight:600;">Pendientes de acción</div>
+            <div style="padding:12px 16px; display:flex; flex-direction:column; gap:10px;">
+              <div style="border:1px solid #E3E7EE; border-radius:6px; padding:11px 12px; display:flex; flex-direction:column; gap:3px;">
+                <div style="display:flex; justify-content:space-between; font-size:12.5px;"><span style="font-weight:600;">Ticket de depósito</span><span style="font-size:10px; background:#FBF1DA; color:#A98330; padding:2px 7px; border-radius:99px; font-weight:600;">hoy</span></div>
+                <div style="font-size:11.5px; color:#5B6B82;">L. Suárez · $U 18.500 · foto adjunta</div>
+                <div style="display:flex; gap:8px; margin-top:5px;">
+                  <span style="font-size:11px; font-weight:600; color:#fff; background:#002856; padding:5px 12px; border-radius:5px; cursor:pointer;" onClick="{{ goCuentas }}">Validar</span>
+                  <span style="font-size:11px; font-weight:600; color:#2A3A52; border:1px solid #E3E7EE; padding:5px 12px; border-radius:5px; cursor:pointer;">Ver foto</span>
+                </div>
+              </div>
+              <div style="border:1px solid #E3E7EE; border-radius:6px; padding:11px 12px; display:flex; flex-direction:column; gap:3px;">
+                <div style="display:flex; justify-content:space-between; font-size:12.5px;"><span style="font-weight:600;">Transferencia de stock</span><span style="font-size:10px; background:#F7E4E2; color:#A8312A; padding:2px 7px; border-radius:99px; font-weight:600;">2 días</span></div>
+                <div style="font-size:11.5px; color:#5B6B82;">D. Rocha → J. Cabrera · 12 × El Deseado…</div>
+                <div style="display:flex; gap:8px; margin-top:5px;">
+                  <span style="font-size:11px; font-weight:600; color:#fff; background:#002856; padding:5px 12px; border-radius:5px; cursor:pointer;" onClick="{{ goStock }}">Autorizar</span>
+                  <span style="font-size:11px; font-weight:600; color:#A8312A; border:1px solid #E3E7EE; padding:5px 12px; border-radius:5px; cursor:pointer;">Rechazar</span>
+                </div>
+              </div>
+              <div style="border:1px solid #E3E7EE; border-radius:6px; padding:11px 12px; display:flex; flex-direction:column; gap:3px;">
+                <div style="display:flex; justify-content:space-between; font-size:12.5px;"><span style="font-weight:600;">Pedido de stock</span><span style="font-size:10px; background:#FBF1DA; color:#A98330; padding:2px 7px; border-radius:99px; font-weight:600;">por autorizar</span></div>
+                <div style="font-size:11.5px; color:#5B6B82;">J. Cabrera · 25 × La Gran Esperanza · $U 19.800</div>
+                <div style="display:flex; gap:8px; margin-top:5px;">
+                  <span style="font-size:11px; font-weight:600; color:#fff; background:#002856; padding:5px 12px; border-radius:5px; cursor:pointer;" onClick="{{ goStock }}">Autorizar</span>
+                  <span style="font-size:11px; font-weight:600; color:#A8312A; border:1px solid #E3E7EE; padding:5px 12px; border-radius:5px; cursor:pointer;">Rechazar</span>
+                </div>
+              </div>
+              <div style="border:1px solid #E3E7EE; border-radius:6px; padding:11px 12px; display:flex; flex-direction:column; gap:3px;">
+                <div style="display:flex; justify-content:space-between; font-size:12.5px;"><span style="font-weight:600;">Colportora sin zona</span><span style="font-size:10px; background:#E6EEF8; color:#13407A; padding:2px 7px; border-radius:99px; font-weight:600;">nueva</span></div>
+                <div style="font-size:11.5px; color:#5B6B82;">Ana Martínez · se sumó a tu región · sin zona asignada</div>
+                <div style="display:flex; gap:8px; margin-top:5px;">
+                  <span style="font-size:11px; font-weight:600; color:#fff; background:#002856; padding:5px 12px; border-radius:5px; cursor:pointer;" onClick="{{ goEquipo }}">Asignar zona</span>
+                </div>
+              </div>
+            </div>
+            <div style="border-top:1px solid #E3E7EE; padding:12px 16px;">
+              <div style="font-size:10px; letter-spacing:.13em; color:#5B6B82; font-weight:600; margin-bottom:8px;">MINI MAPA REGIÓN</div>
+              <div style="height:130px; border-radius:6px; background:#E8EEF3 repeating-linear-gradient(45deg, rgba(14,26,43,.035) 0 8px, transparent 8px 20px); position:relative;">
+                <span style="position:absolute; inset:0; display:grid; place-items:center; font-family:'JetBrains Mono',monospace; font-size:10px; color:#90A0B7;">[ mapa OSM · zonas región ]</span>
+                <span style="position:absolute; left:26%; top:34%; width:12px; height:12px; border-radius:50%; background:#002856; border:2px solid #fff;"></span>
+                <span style="position:absolute; left:48%; top:58%; width:10px; height:10px; border-radius:50%; background:#13407A; border:2px solid #fff;"></span>
+                <span style="position:absolute; left:68%; top:40%; width:9px; height:9px; border-radius:50%; background:#3B5C8C; border:2px solid #fff;"></span>
+                <span style="position:absolute; left:60%; top:72%; width:9px; height:9px; border-radius:50%; background:#A8312A; border:2px solid #fff;"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+
+    <!-- ════════════ EQUIPO ════════════ -->
+    <sc-if value="{{ show.equipo }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="Coordinador · Equipo" style="position:absolute; inset:0; overflow:auto; padding:20px 22px; display:flex; flex-direction:column; gap:16px;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <h2 style="font-family:'Source Serif 4',serif; font-size:21px; font-weight:600; margin:0;">Mi equipo · Montevideo Oeste</h2>
+          <span style="font-size:12px; font-weight:600; color:#fff; background:#002856; padding:9px 16px; border-radius:6px; cursor:pointer;">+ Asignar colportor a zona</span>
+        </div>
+        <div style="display:flex; gap:8px;">
+          <span style="font-size:12px; font-weight:600; background:#002856; color:#fff; padding:7px 14px; border-radius:999px; cursor:pointer;">Todas las zonas · 14</span>
+          <span style="font-size:12px; font-weight:600; background:#fff; color:#2A3A52; border:1px solid #E3E7EE; padding:7px 14px; border-radius:999px; cursor:pointer;">Cerro Norte · 5</span>
+          <span style="font-size:12px; font-weight:600; background:#fff; color:#2A3A52; border:1px solid #E3E7EE; padding:7px 14px; border-radius:999px; cursor:pointer;">La Teja · 4</span>
+          <span style="font-size:12px; font-weight:600; background:#fff; color:#2A3A52; border:1px solid #E3E7EE; padding:7px 14px; border-radius:999px; cursor:pointer;">Paso de la Arena · 3</span>
+          <span style="font-size:12px; font-weight:600; background:#fff; color:#2A3A52; border:1px solid #E3E7EE; padding:7px 14px; border-radius:999px; cursor:pointer;">Belvedere · 2</span>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 320px; gap:16px; align-items:start;">
+          <div style="background:#fff; border:1px solid #E3E7EE; border-radius:8px; overflow:hidden;">
+            <div style="display:grid; grid-template-columns:1.8fr 1.4fr 1fr 1.1fr 1fr 1.2fr 0.8fr; padding:10px 18px; font-size:10px; letter-spacing:.1em; color:#5B6B82; font-weight:600; border-bottom:1px solid #E3E7EE;">
+              <span>COLPORTOR</span><span>ZONA</span><span>HORAS SEM.</span><span>VENTAS</span><span>COBRADO</span><span>ÚLTIMA SYNC</span><span></span>
+            </div>
+            <div style="display:grid; grid-template-columns:1.8fr 1.4fr 1fr 1.1fr 1fr 1.2fr 0.8fr; padding:11px 18px; font-size:12.5px; border-bottom:1px solid #F3F1EA; align-items:center;">
+              <span style="font-weight:600;">Diego Rocha</span><span style="color:#5B6B82;">Cerro Norte</span><span style="font-family:'JetBrains Mono',monospace;">28,4 h</span><span style="font-family:'JetBrains Mono',monospace;">$U 84K</span><span style="color:#1F6E3A; font-weight:600;">78%</span><span style="color:#5B6B82;">hace 20 min</span><span style="font-size:11px; color:#13407A; font-weight:600; cursor:pointer;" onClick="{{ goCuentas }}">Cuenta</span>
+            </div>
+            <div style="display:grid; grid-template-columns:1.8fr 1.4fr 1fr 1.1fr 1fr 1.2fr 0.8fr; padding:11px 18px; font-size:12.5px; border-bottom:1px solid #F3F1EA; align-items:center;">
+              <span style="font-weight:600;">Melina Vázquez</span><span style="color:#5B6B82;">La Teja</span><span style="font-family:'JetBrains Mono',monospace;">31,0 h</span><span style="font-family:'JetBrains Mono',monospace;">$U 92K</span><span style="color:#1F6E3A; font-weight:600;">74%</span><span style="color:#5B6B82;">hace 1 h</span><span style="font-size:11px; color:#13407A; font-weight:600; cursor:pointer;" onClick="{{ goCuentas }}">Cuenta</span>
+            </div>
+            <div style="display:grid; grid-template-columns:1.8fr 1.4fr 1fr 1.1fr 1fr 1.2fr 0.8fr; padding:11px 18px; font-size:12.5px; border-bottom:1px solid #F3F1EA; align-items:center;">
+              <span style="font-weight:600;">Laura Suárez</span><span style="color:#5B6B82;">Paso de la Arena</span><span style="font-family:'JetBrains Mono',monospace;">26,2 h</span><span style="font-family:'JetBrains Mono',monospace;">$U 67K</span><span style="color:#1F6E3A; font-weight:600;">81%</span><span style="color:#5B6B82;">hace 3 h</span><span style="font-size:11px; color:#13407A; font-weight:600; cursor:pointer;" onClick="{{ goCuentas }}">Cuenta</span>
+            </div>
+            <div style="display:grid; grid-template-columns:1.8fr 1.4fr 1fr 1.1fr 1fr 1.2fr 0.8fr; padding:11px 18px; font-size:12.5px; border-bottom:1px solid #F3F1EA; align-items:center;">
+              <span style="font-weight:600;">Joel Cabrera</span><span style="color:#5B6B82;">Cerro Norte</span><span style="font-family:'JetBrains Mono',monospace;">19,8 h</span><span style="font-family:'JetBrains Mono',monospace;">$U 27K</span><span style="color:#A98330; font-weight:600;">52%</span><span style="color:#5B6B82;">hace 40 min</span><span style="font-size:11px; color:#13407A; font-weight:600; cursor:pointer;" onClick="{{ goCuentas }}">Cuenta</span>
+            </div>
+            <div style="display:grid; grid-template-columns:1.8fr 1.4fr 1fr 1.1fr 1fr 1.2fr 0.8fr; padding:11px 18px; font-size:12.5px; border-bottom:1px solid #F3F1EA; align-items:center; background:#FBF8F1;">
+              <span style="font-weight:600;">Pablo Ferreira</span><span style="color:#5B6B82;">Belvedere</span><span style="font-family:'JetBrains Mono',monospace;">11,5 h</span><span style="font-family:'JetBrains Mono',monospace;">$U 14K</span><span style="color:#A8312A; font-weight:600;">39%</span><span style="color:#A8312A; font-weight:600;">⚠ hace 4 días</span><span style="font-size:11px; color:#13407A; font-weight:600; cursor:pointer;" onClick="{{ goCuentas }}">Cuenta</span>
+            </div>
+            <div style="display:grid; grid-template-columns:1.8fr 1.4fr 1fr 1.1fr 1fr 1.2fr 0.8fr; padding:11px 18px; font-size:12.5px; align-items:center;">
+              <span style="font-weight:600;">Noelia Acosta</span><span style="color:#5B6B82;">La Teja</span><span style="font-family:'JetBrains Mono',monospace;">24,6 h</span><span style="font-family:'JetBrains Mono',monospace;">$U 58K</span><span style="color:#1F6E3A; font-weight:600;">69%</span><span style="color:#5B6B82;">hace 2 h</span><span style="font-size:11px; color:#13407A; font-weight:600; cursor:pointer;" onClick="{{ goCuentas }}">Cuenta</span>
+            </div>
+          </div>
+
+          <div style="display:flex; flex-direction:column; gap:16px;">
+            <div style="background:#FBF8F1; border:1px solid #C8A24A; border-radius:8px; padding:13px 16px; display:flex; flex-direction:column; gap:4px;">
+              <span style="font-size:12.5px; font-weight:600;">Sin zona asignada · 1</span>
+              <span style="font-size:11px; color:#5B6B82;">Ana Martínez · nueva colportora en tu región</span>
+              <div style="display:flex; gap:8px; margin-top:5px;">
+                <span style="font-size:11px; font-weight:600; color:#fff; background:#002856; padding:5px 12px; border-radius:5px; cursor:pointer;">Asignar zona</span>
+              </div>
+            </div>
+            <div style="background:#fff; border:1px solid #E3E7EE; border-radius:8px; overflow:hidden;">
+              <div style="padding:14px 16px 10px; display:flex; justify-content:space-between; align-items:baseline; border-bottom:1px solid #E3E7EE;">
+                <span style="font-family:'Source Serif 4',serif; font-size:15px; font-weight:600;">Precios por zona</span>
+                <span style="font-size:11px; color:#13407A; font-weight:600; cursor:pointer;">Editar</span>
+              </div>
+              <div style="padding:8px 16px 12px; display:flex; flex-direction:column;">
+                <div style="display:flex; justify-content:space-between; align-items:center; padding:9px 0; border-bottom:1px solid #F3F1EA;">
+                  <div style="display:flex; flex-direction:column;"><span style="font-size:12.5px; font-weight:600;">El Deseado de Todas…</span><span style="font-size:11px; color:#90A0B7;">base $U 1.450</span></div>
+                  <span style="font-family:'JetBrains Mono',monospace; font-size:12.5px;">$U 1.500</span>
+                </div>
+                <div style="display:flex; justify-content:space-between; align-items:center; padding:9px 0; border-bottom:1px solid #F3F1EA;">
+                  <div style="display:flex; flex-direction:column;"><span style="font-size:12.5px; font-weight:600;">Vida Sana · 3 tomos</span><span style="font-size:11px; color:#90A0B7;">base $U 2.900</span></div>
+                  <span style="font-family:'JetBrains Mono',monospace; font-size:12.5px;">$U 3.100</span>
+                </div>
+                <div style="display:flex; justify-content:space-between; align-items:center; padding:9px 0;">
+                  <div style="display:flex; flex-direction:column;"><span style="font-size:12.5px; font-weight:600;">Historias para Niños</span><span style="font-size:11px; color:#90A0B7;">base $U 1.980</span></div>
+                  <span style="font-family:'JetBrains Mono',monospace; font-size:12.5px;">$U 2.050</span>
+                </div>
+              </div>
+              <div style="border-top:1px solid #E3E7EE; padding:12px 16px; font-size:11.5px; color:#2A3A52; line-height:1.6; background:#F3F1EA;">El precio de venta se define por zona dentro de la campaña y se distribuye por delta-sync a los dispositivos.</div>
+            </div>
+
+            <div style="background:#fff; border:1px solid #E3E7EE; border-radius:8px; overflow:hidden;">
+              <div style="padding:14px 16px 10px; border-bottom:1px solid #E3E7EE; font-family:'Source Serif 4',serif; font-size:15px; font-weight:600;">Acompañamientos</div>
+              <div style="padding:12px 16px; display:flex; flex-direction:column; gap:10px;">
+                <div style="border:1px solid #E3E7EE; border-radius:6px; padding:11px 12px; display:flex; flex-direction:column; gap:4px;">
+                  <span style="font-size:12.5px; font-weight:600;">Jornada de J. Cabrera · ayer</span>
+                  <span style="font-size:11px; color:#5B6B82;">3,4 h · Cerro Norte · sin acompañamiento registrado</span>
+                  <div style="display:flex; gap:8px; margin-top:4px;">
+                    <span style="font-size:11px; font-weight:600; color:#fff; background:#002856; padding:5px 12px; border-radius:5px; cursor:pointer;">Registrar acompañamiento</span>
+                  </div>
+                </div>
+                <div style="display:flex; justify-content:space-between; font-size:12.5px; padding:2px 1px;"><span style="color:#5B6B82;">Jornadas acompañadas esta campaña</span><span style="font-family:'JetBrains Mono',monospace; font-weight:500;">21%</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+
+    <!-- ════════════ STOCK ════════════ -->
+    <sc-if value="{{ show.stock }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="Coordinador · Stock" style="position:absolute; inset:0; overflow:auto; padding:20px 22px; display:flex; flex-direction:column; gap:16px;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <h2 style="font-family:'Source Serif 4',serif; font-size:21px; font-weight:600; margin:0;">Stock y pedidos</h2>
+          <span style="font-size:12px; font-weight:600; color:#fff; background:#002856; padding:9px 16px; border-radius:6px; cursor:pointer;">+ Pedido a casa editora</span>
+        </div>
+
+        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:14px; max-width:760px;">
+          <div style="background:#fff; border:1px solid #E3E7EE; border-radius:8px; padding:14px 16px;">
+            <div style="font-size:10px; letter-spacing:.13em; color:#5B6B82; font-weight:600;">LIBROS EN CAMPO</div>
+            <div style="font-family:'Source Serif 4',serif; font-size:26px; font-weight:600; color:#002856;">486</div>
+          </div>
+          <div style="background:#fff; border:1px solid #E3E7EE; border-radius:8px; padding:14px 16px;">
+            <div style="font-size:10px; letter-spacing:.13em; color:#5B6B82; font-weight:600;">PEDIDOS EN CURSO</div>
+            <div style="font-family:'Source Serif 4',serif; font-size:26px; font-weight:600; color:#13407A;">2</div>
+          </div>
+          <div style="background:#fff; border:1px solid #E3E7EE; border-radius:8px; padding:14px 16px;">
+            <div style="font-size:10px; letter-spacing:.13em; color:#5B6B82; font-weight:600;">TRANSFERENCIAS PENDIENTES</div>
+            <div style="font-family:'Source Serif 4',serif; font-size:26px; font-weight:600; color:#A98330;">1</div>
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 320px; gap:16px; align-items:start;">
+          <div style="display:flex; flex-direction:column; gap:16px;">
+            <div style="background:#fff; border:1px solid #E3E7EE; border-radius:8px; overflow:hidden;">
+              <div style="padding:14px 18px 10px; font-family:'Source Serif 4',serif; font-size:15px; font-weight:600;">Pedidos a casa editora</div>
+              <div style="display:grid; grid-template-columns:0.8fr 1fr 1fr 1.1fr 1.5fr 0.8fr; padding:7px 18px; font-size:10px; letter-spacing:.1em; color:#5B6B82; font-weight:600; border-bottom:1px solid #E3E7EE;">
+                <span>N°</span><span>SOLICITA</span><span>LIBROS</span><span>MONTO</span><span>ESTADO</span><span></span>
+              </div>
+              <div style="display:grid; grid-template-columns:0.8fr 1fr 1fr 1.1fr 1.5fr 0.8fr; padding:11px 18px; font-size:12.5px; border-bottom:1px solid #F3F1EA; align-items:center; background:#FBF8F1;">
+                <span style="font-family:'JetBrains Mono',monospace;">#214</span><span style="color:#5B6B82;">J. Cabrera</span><span>25</span><span style="font-family:'JetBrains Mono',monospace;">$U 19.800</span>
+                <span><span style="font-size:10px; background:#FBF1DA; color:#A98330; padding:3px 8px; border-radius:99px; font-weight:600;">POR AUTORIZAR</span></span>
+                <span style="font-size:11px; font-weight:600; color:#fff; background:#002856; padding:5px 12px; border-radius:5px; cursor:pointer; justify-self:start;">Autorizar</span>
+              </div>
+              <div style="display:grid; grid-template-columns:0.8fr 1fr 1fr 1.1fr 1.5fr 0.8fr; padding:11px 18px; font-size:12.5px; border-bottom:1px solid #F3F1EA; align-items:center;">
+                <span style="font-family:'JetBrains Mono',monospace;">#208</span><span style="color:#5B6B82;">M. Vázquez</span><span>40</span><span style="font-family:'JetBrains Mono',monospace;">$U 58.000</span>
+                <span><span style="font-size:10px; background:#E6EEF8; color:#13407A; padding:3px 8px; border-radius:99px; font-weight:600;">DESPACHADO</span></span>
+                <span style="font-size:11px; color:#13407A; font-weight:600; cursor:pointer;">Ver</span>
+              </div>
+              <div style="display:grid; grid-template-columns:0.8fr 1fr 1fr 1.1fr 1.5fr 0.8fr; padding:11px 18px; font-size:12.5px; align-items:center;">
+                <span style="font-family:'JetBrains Mono',monospace;">#196</span><span style="color:#5B6B82;">D. Rocha</span><span>60</span><span style="font-family:'JetBrains Mono',monospace;">$U 71.500</span>
+                <span><span style="font-size:10px; background:#E3EFE6; color:#1F6E3A; padding:3px 8px; border-radius:99px; font-weight:600;">ENTREGADO</span></span>
+                <span style="font-size:11px; color:#13407A; font-weight:600; cursor:pointer;">Ver</span>
+              </div>
+            </div>
+
+            <div style="background:#fff; border:1px solid #E3E7EE; border-radius:8px; overflow:hidden;">
+              <div style="padding:14px 18px 10px; font-family:'Source Serif 4',serif; font-size:15px; font-weight:600;">Transferencias entre colportores</div>
+              <div style="display:grid; grid-template-columns:1.6fr 1.6fr 1.8fr 1.2fr 1.4fr; padding:7px 18px; font-size:10px; letter-spacing:.1em; color:#5B6B82; font-weight:600; border-bottom:1px solid #E3E7EE;">
+                <span>DE</span><span>PARA</span><span>PRODUCTO</span><span>CANT.</span><span></span>
+              </div>
+              <div style="display:grid; grid-template-columns:1.6fr 1.6fr 1.8fr 1.2fr 1.4fr; padding:11px 18px; font-size:12.5px; border-bottom:1px solid #F3F1EA; align-items:center; background:#FBF8F1;">
+                <span style="font-weight:600;">Diego Rocha</span><span style="font-weight:600;">Joel Cabrera</span><span style="color:#5B6B82;">El Deseado de Todas…</span><span>12</span>
+                <span style="display:flex; gap:8px;">
+                  <span style="font-size:11px; font-weight:600; color:#fff; background:#002856; padding:5px 12px; border-radius:5px; cursor:pointer;">Autorizar</span>
+                  <span style="font-size:11px; font-weight:600; color:#A8312A; border:1px solid #E3E7EE; padding:5px 12px; border-radius:5px; cursor:pointer;">Rechazar</span>
+                </span>
+              </div>
+              <div style="display:grid; grid-template-columns:1.6fr 1.6fr 1.8fr 1.2fr 1.4fr; padding:11px 18px; font-size:12.5px; align-items:center;">
+                <span style="font-weight:600;">Melina Vázquez</span><span style="font-weight:600;">Noelia Acosta</span><span style="color:#5B6B82;">Vida Sana · 3 tomos</span><span>4</span>
+                <span><span style="font-size:10px; background:#E3EFE6; color:#1F6E3A; padding:3px 8px; border-radius:99px; font-weight:600;">AUTORIZADA · 08 JUN</span></span>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex; flex-direction:column; gap:16px;">
+            <div style="background:#fff; border:1px solid #E3E7EE; border-radius:8px; overflow:hidden;">
+              <div style="padding:14px 16px 10px; border-bottom:1px solid #E3E7EE; font-family:'Source Serif 4',serif; font-size:15px; font-weight:600;">Stock por colportor</div>
+              <div style="padding:8px 16px 12px; display:flex; flex-direction:column;">
+                <div style="display:flex; justify-content:space-between; padding:8px 0; font-size:12.5px; border-bottom:1px solid #F3F1EA;"><span style="font-weight:600;">Diego Rocha</span><span style="font-family:'JetBrains Mono',monospace;">64 libros</span></div>
+                <div style="display:flex; justify-content:space-between; padding:8px 0; font-size:12.5px; border-bottom:1px solid #F3F1EA;"><span style="font-weight:600;">Melina Vázquez</span><span style="font-family:'JetBrains Mono',monospace;">51 libros</span></div>
+                <div style="display:flex; justify-content:space-between; padding:8px 0; font-size:12.5px; border-bottom:1px solid #F3F1EA;"><span style="font-weight:600;">Laura Suárez</span><span style="font-family:'JetBrains Mono',monospace;">47 libros</span></div>
+                <div style="display:flex; justify-content:space-between; padding:8px 0; font-size:12.5px; border-bottom:1px solid #F3F1EA;"><span style="font-weight:600;">Noelia Acosta</span><span style="font-family:'JetBrains Mono',monospace;">38 libros</span></div>
+                <div style="display:flex; justify-content:space-between; padding:8px 0; font-size:12.5px;"><span style="font-weight:600; color:#A8312A;">Joel Cabrera</span><span style="font-family:'JetBrains Mono',monospace; color:#A8312A; font-weight:500;">⚠ 6 libros</span></div>
+              </div>
+            </div>
+            <div style="background:#F3F1EA; border-radius:8px; padding:13px 15px; font-size:11.5px; color:#2A3A52; line-height:1.6;"><b style="color:#002856;">Flujo de pedidos:</b> los pedidos y transferencias los autorizás vos como coordinador — el administrador no interviene. Al autorizar, se genera automáticamente la deuda en la cuenta de cada colportor receptor.</div>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+
+    <!-- ════════════ CUENTAS ════════════ -->
+    <sc-if value="{{ show.cuentas }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="Coordinador · Cuentas" style="position:absolute; inset:0; overflow:auto; padding:20px 22px; display:flex; flex-direction:column; gap:16px;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <h2 style="font-family:'Source Serif 4',serif; font-size:21px; font-weight:600; margin:0;">Estado de cuenta del equipo</h2>
+          <div style="display:flex; gap:24px; align-items:center;">
+            <div style="display:flex; flex-direction:column; align-items:flex-end;"><span style="font-size:10px; letter-spacing:.12em; color:#5B6B82; font-weight:600;">DEUDA TOTAL EQUIPO</span><span style="font-family:'Source Serif 4',serif; font-size:19px; font-weight:600; color:#A8312A;">$U 214.300</span></div>
+            <div style="display:flex; flex-direction:column; align-items:flex-end;"><span style="font-size:10px; letter-spacing:.12em; color:#5B6B82; font-weight:600;">DEPOSITADO CAMPAÑA</span><span style="font-family:'Source Serif 4',serif; font-size:19px; font-weight:600; color:#1F6E3A;">$U 398.700</span></div>
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 340px; gap:16px; align-items:start;">
+          <div style="background:#fff; border:1px solid #E3E7EE; border-radius:8px; overflow:hidden;">
+            <div style="display:grid; grid-template-columns:1.7fr 1.1fr 1.1fr 1.1fr 1.1fr 1.2fr; padding:10px 18px; font-size:10px; letter-spacing:.1em; color:#5B6B82; font-weight:600; border-bottom:1px solid #E3E7EE;">
+              <span>COLPORTOR</span><span>DEUDA</span><span>DEPOSITADO</span><span>EN MANO</span><span>POR COBRAR</span><span>ÚLT. DEPÓSITO</span>
+            </div>
+            <div style="display:grid; grid-template-columns:1.7fr 1.1fr 1.1fr 1.1fr 1.1fr 1.2fr; padding:12px 18px; font-size:12.5px; border-bottom:1px solid #F3F1EA; align-items:center;">
+              <span style="font-weight:600;">Diego Rocha</span><span style="font-family:'JetBrains Mono',monospace; color:#A8312A;">$U 31.200</span><span style="font-family:'JetBrains Mono',monospace;">$U 78.400</span><span style="font-family:'JetBrains Mono',monospace;">$U 9.150</span><span style="font-family:'JetBrains Mono',monospace;">$U 12.600</span><span style="color:#5B6B82;">10 jun</span>
+            </div>
+            <div style="display:grid; grid-template-columns:1.7fr 1.1fr 1.1fr 1.1fr 1.1fr 1.2fr; padding:12px 18px; font-size:12.5px; border-bottom:1px solid #F3F1EA; align-items:center;">
+              <span style="font-weight:600;">Melina Vázquez</span><span style="font-family:'JetBrains Mono',monospace; color:#A8312A;">$U 24.800</span><span style="font-family:'JetBrains Mono',monospace;">$U 86.100</span><span style="font-family:'JetBrains Mono',monospace;">$U 5.400</span><span style="font-family:'JetBrains Mono',monospace;">$U 8.200</span><span style="color:#5B6B82;">11 jun</span>
+            </div>
+            <div style="display:grid; grid-template-columns:1.7fr 1.1fr 1.1fr 1.1fr 1.1fr 1.2fr; padding:12px 18px; font-size:12.5px; border-bottom:1px solid #F3F1EA; align-items:center;">
+              <span style="font-weight:600;">Laura Suárez</span><span style="font-family:'JetBrains Mono',monospace; color:#A8312A;">$U 18.900</span><span style="font-family:'JetBrains Mono',monospace;">$U 61.300</span><span style="font-family:'JetBrains Mono',monospace;">$U 18.500</span><span style="font-family:'JetBrains Mono',monospace;">$U 4.100</span><span style="color:#A98330; font-weight:600;">ticket pend.</span>
+            </div>
+            <div style="display:grid; grid-template-columns:1.7fr 1.1fr 1.1fr 1.1fr 1.1fr 1.2fr; padding:12px 18px; font-size:12.5px; border-bottom:1px solid #F3F1EA; align-items:center; background:#FBF8F1;">
+              <span style="font-weight:600;">Joel Cabrera</span><span style="font-family:'JetBrains Mono',monospace; color:#A8312A; font-weight:500;">$U 42.600</span><span style="font-family:'JetBrains Mono',monospace;">$U 19.800</span><span style="font-family:'JetBrains Mono',monospace;">$U 2.300</span><span style="font-family:'JetBrains Mono',monospace;">$U 15.900</span><span style="color:#A8312A; font-weight:600;">⚠ 29 may</span>
+            </div>
+            <div style="display:grid; grid-template-columns:1.7fr 1.1fr 1.1fr 1.1fr 1.1fr 1.2fr; padding:12px 18px; font-size:12.5px; align-items:center;">
+              <span style="font-weight:600;">Noelia Acosta</span><span style="font-family:'JetBrains Mono',monospace; color:#A8312A;">$U 21.400</span><span style="font-family:'JetBrains Mono',monospace;">$U 54.200</span><span style="font-family:'JetBrains Mono',monospace;">$U 6.800</span><span style="font-family:'JetBrains Mono',monospace;">$U 7.400</span><span style="color:#5B6B82;">09 jun</span>
+            </div>
+          </div>
+
+          <div style="background:#fff; border:1px solid #E3E7EE; border-radius:8px; overflow:hidden;">
+            <div style="padding:14px 16px 10px; border-bottom:1px solid #E3E7EE; display:flex; justify-content:space-between; align-items:baseline;">
+              <span style="font-family:'Source Serif 4',serif; font-size:15px; font-weight:600;">Tickets por validar</span>
+              <span style="font-size:10px; background:#FBF1DA; color:#A98330; padding:2px 8px; border-radius:99px; font-weight:600;">4</span>
+            </div>
+            <div style="padding:12px 16px; display:flex; flex-direction:column; gap:10px;">
+              <div style="border:1px solid #E3E7EE; border-radius:6px; padding:11px 12px; display:flex; flex-direction:column; gap:6px;">
+                <div style="display:flex; justify-content:space-between; font-size:12.5px;"><span style="font-weight:600;">Laura Suárez</span><span style="font-family:'JetBrains Mono',monospace;">$U 18.500</span></div>
+                <div style="height:74px; border-radius:5px; background:#E8EEF3 repeating-linear-gradient(45deg, rgba(14,26,43,.05) 0 6px, transparent 6px 15px); display:grid; place-items:center; font-family:'JetBrains Mono',monospace; font-size:10px; color:#90A0B7;">[ foto ticket depósito ]</div>
+                <div style="font-size:11px; color:#5B6B82;">depósito BROU · hoy 10:42 · recibo N° 0482</div>
+                <div style="display:flex; gap:8px; margin-top:2px;">
+                  <span style="font-size:11px; font-weight:600; color:#fff; background:#1F6E3A; padding:5px 12px; border-radius:5px; cursor:pointer;">✓ Validar</span>
+                  <span style="font-size:11px; font-weight:600; color:#A8312A; border:1px solid #E3E7EE; padding:5px 12px; border-radius:5px; cursor:pointer;">Rechazar</span>
+                </div>
+              </div>
+              <div style="border:1px solid #E3E7EE; border-radius:6px; padding:11px 12px; display:flex; flex-direction:column; gap:4px;">
+                <div style="display:flex; justify-content:space-between; font-size:12.5px;"><span style="font-weight:600;">Diego Rocha</span><span style="font-family:'JetBrains Mono',monospace;">$U 9.000</span></div>
+                <div style="font-size:11px; color:#5B6B82;">transferencia · ayer 18:03 · sin foto</div>
+                <div style="display:flex; gap:8px; margin-top:4px;">
+                  <span style="font-size:11px; font-weight:600; color:#2A3A52; border:1px solid #E3E7EE; padding:5px 12px; border-radius:5px; cursor:pointer;">Revisar</span>
+                </div>
+              </div>
+              <span style="font-size:11px; color:#13407A; font-weight:600; cursor:pointer; padding:2px 1px;">Ver los 4 tickets →</span>
+            </div>
+            <div style="border-top:1px solid #E3E7EE; padding:12px 16px; font-size:11.5px; color:#2A3A52; line-height:1.6; background:#F3F1EA;">Al validar un ticket se acredita el depósito y baja la deuda del colportor. Las fotos se guardan máx. 4 meses.</div>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+
+    <!-- ════════════ REPORTES ════════════ -->
+    <sc-if value="{{ show.reportes }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="Coordinador · Reportes" style="position:absolute; inset:0; overflow:auto; padding:20px 22px; display:flex; flex-direction:column; gap:16px;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <h2 style="font-family:'Source Serif 4',serif; font-size:21px; font-weight:600; margin:0;">Reportes · Montevideo Oeste</h2>
+          <div style="display:flex; gap:8px;">
+            <span style="font-size:12px; font-weight:600; background:#002856; color:#fff; padding:7px 14px; border-radius:999px; cursor:pointer;">Campaña</span>
+            <span style="font-size:12px; font-weight:600; background:#fff; color:#2A3A52; border:1px solid #E3E7EE; padding:7px 14px; border-radius:999px; cursor:pointer;">Mes</span>
+            <span style="font-size:12px; font-weight:600; background:#fff; color:#2A3A52; border:1px solid #E3E7EE; padding:7px 14px; border-radius:999px; cursor:pointer;">Semana</span>
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1.4fr 1fr; gap:16px; align-items:start;">
+          <div style="display:flex; flex-direction:column; gap:16px;">
+            <div style="background:#fff; border:1px solid #E3E7EE; border-radius:8px; padding:16px 18px;">
+              <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:14px;">
+                <span style="font-family:'Source Serif 4',serif; font-size:15px; font-weight:600;">Ventas por semana · región</span>
+                <span style="font-size:11px; color:#90A0B7;">$U miles · campaña completa</span>
+              </div>
+              <div style="display:flex; align-items:flex-end; gap:10px; height:120px;">
+                <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; height:100%; justify-content:flex-end;"><div style="width:100%; height:28%; background:#CFD6E1; border-radius:3px 3px 0 0;"></div><span style="font-size:10px; color:#90A0B7;">S1</span></div>
+                <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; height:100%; justify-content:flex-end;"><div style="width:100%; height:41%; background:#CFD6E1; border-radius:3px 3px 0 0;"></div><span style="font-size:10px; color:#90A0B7;">S2</span></div>
+                <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; height:100%; justify-content:flex-end;"><div style="width:100%; height:52%; background:#CFD6E1; border-radius:3px 3px 0 0;"></div><span style="font-size:10px; color:#90A0B7;">S3</span></div>
+                <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; height:100%; justify-content:flex-end;"><div style="width:100%; height:46%; background:#3B5C8C; border-radius:3px 3px 0 0;"></div><span style="font-size:10px; color:#90A0B7;">S4</span></div>
+                <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; height:100%; justify-content:flex-end;"><div style="width:100%; height:64%; background:#3B5C8C; border-radius:3px 3px 0 0;"></div><span style="font-size:10px; color:#90A0B7;">S5</span></div>
+                <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; height:100%; justify-content:flex-end;"><div style="width:100%; height:88%; background:#13407A; border-radius:3px 3px 0 0;"></div><span style="font-size:10px; color:#90A0B7;">S6</span></div>
+                <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; height:100%; justify-content:flex-end;"><div style="width:100%; height:100%; background:#002856; border-radius:3px 3px 0 0;"></div><span style="font-size:10px; color:#90A0B7;">S7</span></div>
+                <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:4px; height:100%; justify-content:flex-end;"><div style="width:100%; height:72%; background:#C8A24A; border-radius:3px 3px 0 0;"></div><span style="font-size:10px; color:#A98330; font-weight:600;">S8</span></div>
+              </div>
+            </div>
+
+            <div style="background:#fff; border:1px solid #E3E7EE; border-radius:8px; padding:16px 18px; display:flex; flex-direction:column; gap:12px;">
+              <span style="font-family:'Source Serif 4',serif; font-size:15px; font-weight:600;">Horas por colportor · esta semana</span>
+              <div style="display:flex; flex-direction:column; gap:9px;">
+                <div style="display:flex; flex-direction:column; gap:3px;">
+                  <div style="display:flex; justify-content:space-between; font-size:12px;"><span style="font-weight:600;">Melina Vázquez</span><span style="font-family:'JetBrains Mono',monospace;">31,0 h</span></div>
+                  <div style="height:7px; background:#F3F1EA; border-radius:4px;"><div style="width:100%; height:7px; background:#002856; border-radius:4px;"></div></div>
+                </div>
+                <div style="display:flex; flex-direction:column; gap:3px;">
+                  <div style="display:flex; justify-content:space-between; font-size:12px;"><span style="font-weight:600;">Diego Rocha</span><span style="font-family:'JetBrains Mono',monospace;">28,4 h</span></div>
+                  <div style="height:7px; background:#F3F1EA; border-radius:4px;"><div style="width:92%; height:7px; background:#13407A; border-radius:4px;"></div></div>
+                </div>
+                <div style="display:flex; flex-direction:column; gap:3px;">
+                  <div style="display:flex; justify-content:space-between; font-size:12px;"><span style="font-weight:600;">Laura Suárez</span><span style="font-family:'JetBrains Mono',monospace;">26,2 h</span></div>
+                  <div style="height:7px; background:#F3F1EA; border-radius:4px;"><div style="width:85%; height:7px; background:#3B5C8C; border-radius:4px;"></div></div>
+                </div>
+                <div style="display:flex; flex-direction:column; gap:3px;">
+                  <div style="display:flex; justify-content:space-between; font-size:12px;"><span style="font-weight:600;">Noelia Acosta</span><span style="font-family:'JetBrains Mono',monospace;">24,6 h</span></div>
+                  <div style="height:7px; background:#F3F1EA; border-radius:4px;"><div style="width:79%; height:7px; background:#3B5C8C; border-radius:4px;"></div></div>
+                </div>
+                <div style="display:flex; flex-direction:column; gap:3px;">
+                  <div style="display:flex; justify-content:space-between; font-size:12px;"><span style="font-weight:600; color:#A8312A;">Pablo Ferreira</span><span style="font-family:'JetBrains Mono',monospace; color:#A8312A;">11,5 h</span></div>
+                  <div style="height:7px; background:#F3F1EA; border-radius:4px;"><div style="width:37%; height:7px; background:#A8312A; border-radius:4px;"></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex; flex-direction:column; gap:16px;">
+            <div style="background:#fff; border:1px solid #E3E7EE; border-radius:8px; padding:16px 18px; display:flex; flex-direction:column; gap:10px;">
+              <span style="font-family:'Source Serif 4',serif; font-size:15px; font-weight:600;">Resumen de campaña</span>
+              <div style="display:flex; justify-content:space-between; font-size:12.5px;"><span style="color:#5B6B82;">Horas totales región</span><span style="font-family:'JetBrains Mono',monospace; font-weight:500;">2.214 h</span></div>
+              <div style="display:flex; justify-content:space-between; font-size:12.5px;"><span style="color:#5B6B82;">Libros colocados</span><span style="font-family:'JetBrains Mono',monospace; font-weight:500;">784</span></div>
+              <div style="display:flex; justify-content:space-between; font-size:12.5px;"><span style="color:#5B6B82;">Visitas registradas</span><span style="font-family:'JetBrains Mono',monospace; font-weight:500;">3.196</span></div>
+              <div style="display:flex; justify-content:space-between; font-size:12.5px;"><span style="color:#5B6B82;">Jornadas acompañadas</span><span style="font-family:'JetBrains Mono',monospace; font-weight:500;">21%</span></div>
+              <div style="display:flex; justify-content:space-between; font-size:12.5px;"><span style="color:#5B6B82;">Cobrado / vendido</span><span style="font-family:'JetBrains Mono',monospace; font-weight:500; color:#1F6E3A;">71%</span></div>
+            </div>
+
+            <div style="background:#fff; border:1px solid #E3E7EE; border-radius:8px; overflow:hidden;">
+              <div style="padding:14px 16px 10px; display:flex; justify-content:space-between; align-items:baseline;">
+                <span style="font-family:'Source Serif 4',serif; font-size:15px; font-weight:600;">Mapa de la región</span>
+                <span style="font-size:11px; color:#90A0B7;">sin PII</span>
+              </div>
+              <div style="height:200px; background:#E8EEF3 repeating-linear-gradient(45deg, rgba(14,26,43,.035) 0 10px, transparent 10px 26px); position:relative;">
+                <span style="position:absolute; inset:0; display:grid; place-items:center; font-family:'JetBrains Mono',monospace; font-size:11px; color:#90A0B7;">[ mapa OSM · Montevideo Oeste ]</span>
+                <div style="position:absolute; left:24%; top:30%; width:34px; height:34px; border-radius:50%; background:#002856; color:#fff; display:grid; place-items:center; font-size:12px; font-weight:600; border:3px solid #fff; box-shadow:0 2px 8px rgba(0,40,86,.35);">5</div>
+                <div style="position:absolute; left:52%; top:52%; width:30px; height:30px; border-radius:50%; background:#13407A; color:#fff; display:grid; place-items:center; font-size:11px; font-weight:600; border:3px solid #fff; box-shadow:0 2px 8px rgba(0,40,86,.35);">4</div>
+                <div style="position:absolute; left:70%; top:28%; width:28px; height:28px; border-radius:50%; background:#3B5C8C; color:#fff; display:grid; place-items:center; font-size:11px; font-weight:600; border:3px solid #fff; box-shadow:0 2px 8px rgba(0,40,86,.35);">3</div>
+                <div style="position:absolute; left:62%; top:70%; width:26px; height:26px; border-radius:50%; background:#A8312A; color:#fff; display:grid; place-items:center; font-size:11px; font-weight:600; border:3px solid #fff; box-shadow:0 2px 8px rgba(0,40,86,.35);">2</div>
+              </div>
+            </div>
+
+            <div style="background:#fff; border:1px solid #E3E7EE; border-radius:8px; padding:16px 18px; display:flex; flex-direction:column; gap:10px;">
+              <span style="font-family:'Source Serif 4',serif; font-size:15px; font-weight:600;">Exportar</span>
+              <div style="display:flex; gap:8px;">
+                <span style="flex:1; text-align:center; font-size:12px; font-weight:600; color:#fff; background:#002856; padding:9px 0; border-radius:6px; cursor:pointer;">Informe PDF</span>
+                <span style="flex:1; text-align:center; font-size:12px; font-weight:600; color:#002856; border:1px solid #CFD6E1; padding:9px 0; border-radius:6px; cursor:pointer;">Datos CSV</span>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { tab: 'inicio' };
+
+  renderVals() {
+    const tabs = ['inicio', 'equipo', 'stock', 'cuentas', 'reportes'];
+    const labels = {
+      inicio: 'Inicio', equipo: 'Equipo', stock: 'Stock',
+      cuentas: 'Cuentas', reportes: 'Reportes'
+    };
+    const t = this.state.tab;
+    const navItems = tabs.map((k) => ({
+      label: labels[k],
+      go: () => this.setState({ tab: k }),
+      style: k === t
+        ? { padding: '8px 14px', borderRadius: 6, background: '#E6EEF8', color: '#002856', fontWeight: 600, cursor: 'pointer' }
+        : { padding: '8px 14px', color: '#2A3A52', cursor: 'pointer' }
+    }));
+    const show = {};
+    tabs.forEach((k) => { show[k] = k === t; });
+    return {
+      navItems,
+      show,
+      goEquipo: () => this.setState({ tab: 'equipo' }),
+      goStock: () => this.setState({ tab: 'stock' }),
+      goCuentas: () => this.setState({ tab: 'cuentas' })
+    };
+  }
+}
+</script>
+</body>
+</html>
